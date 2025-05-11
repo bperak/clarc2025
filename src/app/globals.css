@@ -2,25 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define animation keyframes */
-@keyframes animatedBackground {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+/* Remove old animation keyframes */
+/* @keyframes animatedBackground { ... } */
 
 body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   color: hsl(var(--foreground));
-  /* Animated background: A subtle gradient that slowly shifts */
-  background: linear-gradient(-45deg, hsl(var(--background-start)), hsl(var(--background-mid)), hsl(var(--background-end)), hsl(var(--background-mid)));
-  background-size: 400% 400%; /* Needs to be larger than 100% for movement */
-  animation: animatedBackground 20s ease infinite; /* Adjust duration for speed */
+  background-color: hsl(var(--background)); /* Solid background color from theme */
+  margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
 }
+
+.wave-background-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Place behind all other content */
+  pointer-events: none; /* Make non-interactive */
+}
+
+.wave-element {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  border-radius: 45%;
+  opacity: 0.35; /* Adjusted opacity for better blend with dark theme */
+}
+
+.wave-element-1 {
+  background: #03a9f4; /* Bright Blue */
+  animation: waveAnimate 15s linear infinite; /* Slower for a more ambient feel */
+  bottom: 15%;
+  left: 10%;
+}
+
+.wave-element-2 {
+  background: #f441a5; /* Bright Pink/Magenta */
+  animation: waveAnimate 18s linear infinite; /* Varied speeds */
+  bottom: 10%;
+  left: 35%;
+}
+
+.wave-element-3 {
+  background: #ffeb3b; /* Bright Yellow */
+  animation: waveAnimate 21s linear infinite;
+  bottom: 5%;
+  left: 25%;
+  opacity: 0.25; /* Yellow can be very bright, reduce opacity further */
+}
+
+@keyframes waveAnimate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1); /* Add subtle scaling for more dynamism */
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
 
 @layer base {
   :root {
@@ -38,16 +86,16 @@ html {
     --popover: 0 0% 100%;
     --popover-foreground: 220 40% 10%;
 
-    --primary: 180 80% 40%; /* Deeper Cyan/Teal for light bg */
+    --primary: 207 90% 54%; /* Calm Blue #64B5F6 */
     --primary-foreground: 0 0% 100%; 
 
-    --secondary: 220 30% 96%; /* Very light cool gray */
-    --secondary-foreground: 220 35% 30%;
+    --secondary: 0 0% 100%; /* Clean White #FFFFFF */
+    --secondary-foreground: 220 40% 10%; /* Text on white background */
 
     --muted: 220 30% 92%;
     --muted-foreground: 220 25% 50%; 
 
-    --accent: 280 70% 55%; /* Deeper Purple/Magenta for light bg */
+    --accent: 174 66% 49%; /* Soft Teal #26A69A */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 80% 60%;
@@ -55,58 +103,55 @@ html {
 
     --border: 220 20% 88%; 
     --input: 220 20% 90%; 
-    --ring: 180 80% 45%; /* Primary color for focus rings */
+    --ring: 207 90% 59%; /* Primary color for focus rings */
     
     --radius: 0.8rem; /* Increased for more rounded corners */
 
-    --chart-1: 180 80% 40%; /* Primary */
-    --chart-2: 280 70% 55%; /* Accent */
-    --chart-3: 200 70% 50%; /* Clear Blue */
-    --chart-4: 25 80% 55%;  /* Warm Orange */
-    --chart-5: 220 25% 60%; /* Mid Cool Gray */
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--accent));
+    --chart-3: 200 70% 50%; 
+    --chart-4: 25 80% 55%;  
+    --chart-5: 220 25% 60%; 
   }
 
   .dark {
-    --background: 220 40% 8%; /* Deep, dark desaturated blue - still used by components */
+    --background: 220 40% 5%; /* Very dark blue, almost black */
     --foreground: 210 30% 90%; /* Light cool gray */
 
-    /* Colors for animated gradient background - Dark Theme */
-    --background-start: hsl(220, 40%, 7%);
-    --background-mid:   hsl(220, 35%, 10%);
-    --background-end:   hsl(230, 40%, 8%);
+    /* --background-start, --background-mid, --background-end no longer used for body background */
 
-    --card: 220 35% 12%; /* Slightly lighter than bg for cards */
+    --card: 220 35% 10%; /* Slightly lighter than bg for cards */
     --card-foreground: 210 30% 90%;
 
-    --popover: 220 35% 10%; /* Similar to card or bg */
+    --popover: 220 35% 8%; 
     --popover-foreground: 210 30% 90%;
 
-    --primary: 180 90% 45%; /* Vibrant Cyan/Teal */
-    --primary-foreground: 220 40% 5%; /* Very dark, for contrast on bright primary */
+    --primary: 207 70% 50%; /* Calm Blue, slightly desaturated for dark mode #64B5F6 -> HSL(207, 82%, 67%) - make it less bright*/
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 30% 15%; /* Darker mid-tone for section bg */
+    --secondary: 220 25% 12%; /* Darker shade for secondary elements #FFFFFF -> dark tone */
     --secondary-foreground: 210 25% 80%;
 
-    --muted: 220 25% 20%; /* For less prominent elements/text */
+    --muted: 220 25% 18%; 
     --muted-foreground: 210 20% 65%;
 
-    --accent: 280 80% 60%; /* Vibrant Purple/Magenta */
-    --accent-foreground: 210 30% 95%; /* Very light for contrast */
+    --accent: 174 50% 45%; /* Soft Teal, slightly desaturated for dark mode #26A69A -> HSL(174, 60%, 37%) */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 70% 55%; /* Bright Red */
+    --destructive: 0 60% 50%; 
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 25% 25%; /* Subtle borders */
-    --input: 220 25% 22%; /* Input background */
-    --ring: 180 90% 50%; /* Primary color for focus rings */
+    --border: 220 25% 20%; 
+    --input: 220 25% 18%; 
+    --ring: 207 70% 55%; 
 
-    --radius: 0.8rem; /* Increased for more rounded corners */
+    --radius: 0.8rem;
 
-    --chart-1: 180 90% 45%; /* Primary (Vibrant Cyan/Teal) */
-    --chart-2: 280 80% 60%; /* Accent (Vibrant Purple/Magenta) */
-    --chart-3: 200 60% 65%; /* A brighter, slightly desaturated blue */
-    --chart-4: 30 80% 60%;  /* Vibrant Orange as contrast */
-    --chart-5: 210 20% 50%; /* Muted cool gray */
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--accent));
+    --chart-3: 200 60% 65%; 
+    --chart-4: 30 80% 60%;  
+    --chart-5: 210 20% 50%; 
   }
 }
 
@@ -114,9 +159,5 @@ html {
   * {
     @apply border-border;
   }
-  body {
-    /* bg-background and text-foreground are now handled by direct body styles and inherited --foreground */
-    /* This ensures the animated background takes precedence. */
-    /* If other base body utilities were here, they'd remain. */
-  }
+  /* body background handled by direct style above */
 }

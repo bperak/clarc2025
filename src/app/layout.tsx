@@ -1,16 +1,12 @@
 import type {Metadata} from 'next';
-import {Geist, Geist_Mono} from 'next/font/google';
+import { Open_Sans } from 'next/font/google'; // Changed from Geist to Open Sans
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const openSans = Open_Sans({ // Initialize Open Sans
+  variable: '--font-open-sans',
   subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'] // Specify weights if needed
 });
 
 export const metadata: Metadata = {
@@ -24,9 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth h-full">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen h-full`}>
-        <div className="flex-grow">
+    <html lang="en" className="scroll-smooth h-full dark"> {/* Added dark class for default dark theme */}
+      <body className={`${openSans.variable} font-sans antialiased flex flex-col min-h-screen h-full`}> {/* Use Open Sans variable and font-sans */}
+        <div className="wave-background-container" aria-hidden="true">
+          <div className="wave-element wave-element-1"></div>
+          <div className="wave-element wave-element-2"></div>
+          <div className="wave-element wave-element-3"></div>
+        </div>
+        <div className="flex-grow relative z-0"> {/* Ensure content is above waves */}
           {children}
         </div>
         <Toaster />
