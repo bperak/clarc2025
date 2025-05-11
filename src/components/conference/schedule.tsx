@@ -1,3 +1,9 @@
+/**
+ * @fileOverview ClaritySchedule component displays the conference schedule using tabs for different days.
+ * It fetches session data and organizes it by day, allowing users to switch between days.
+ * On mobile, the tab selection buttons are displayed as a column below the content of the selected day.
+ * On larger screens, tabs are displayed horizontally above the content.
+ */
 "use client";
 
 import { useState } from 'react';
@@ -5,6 +11,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { CalendarDays, User, Clock, Users } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type SessionSpeaker = {
   name: string;
@@ -63,64 +70,92 @@ export function ClaritySchedule() {
       <p className="text-muted-foreground text-center mb-10">
         Explore our diverse range of talks, workshops, and networking opportunities.
       </p>
-      <Tabs defaultValue={`day-${days[0]}`} className="w-full">
-        <TabsList className={`grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:w-auto lg:mx-auto lg:grid-cols-${days.length > 3 ? 3 : days.length}`}>
+      <Tabs defaultValue={`day-${days[0]}`} className="w-full flex flex-col">
+        {/* Tab Content - visually first on mobile */}
+        <div className="order-1 sm:order-2 w-full">
           {days.map(day => (
-            <TabsTrigger key={`day-trigger-${day}`} value={`day-${day}`}>
+            <TabsContent 
+              key={`day-content-${day}`} 
+              value={`day-${day}`}
+              className="sm:mt-8" // Margin top for sm+ screens for space below TabsList
+            >
+              <div className="space-y-6">
+                {getSortedSessionsForDay(day).map((session) => (
+                  <Card key={session.id} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="text-xl text-primary">{session.title}</CardTitle>
+                          <CardDescription className="flex items-center text-sm mt-1">
+                            <Clock className="h-4 w-4 mr-2 text-muted-foreground" /> {session.time}
+                            <span className="mx-2 text-muted-foreground">|</span>
+                            <span className="font-semibold text-accent">{session.type}</span>
+                          </CardDescription>
+                        </div>
+                        <div className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full whitespace-nowrap">
+                          {session.location}
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">{session.description}</p>
+                    </CardContent>
+                    {session.speakers.length > 0 && (
+                      <CardFooter className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                         <div className="flex items-center space-x-2 mb-2 sm:mb-0">
+                          {session.speakers.length === 1 ? <User className="h-4 w-4 text-primary" /> : <Users className="h-4 w-4 text-primary" />}
+                          <span className="text-sm font-medium">
+                            {session.speakers.map(sp => sp.name).join(', ')}
+                          </span>
+                        </div>
+                        <Button variant="outline" size="sm">
+                          <CalendarDays className="mr-2 h-4 w-4" /> Add to Calendar
+                        </Button>
+                      </CardFooter>
+                    )}
+                  </Card>
+                ))}
+                {getSortedSessionsForDay(day).length === 0 && (
+                  <Card className="shadow-lg">
+                    <CardContent className="p-6 text-center text-muted-foreground">
+                      No sessions scheduled for this day yet. Please check back later.
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </TabsContent>
+          ))}
+        </div>
+
+        {/* Tab List - visually second on mobile (column), first on sm+ (row/grid) */}
+        <TabsList 
+          className={cn(
+            "order-2 sm:order-1", // Flex order for visual positioning
+            "mt-8 sm:mt-0",      // Margin top on mobile (TabsList below content), none for sm+
+
+            // Mobile specific styling for the list:
+            "flex flex-col w-full gap-2", // Stack buttons, full width, with gap
+            "p-0 bg-transparent rounded-none", // Remove TabsList's own padding, bg, rounding for mobile
+
+            // sm and up styling for the list (restore default look & apply grid):
+            "sm:grid sm:gap-1", // Use grid for layout, gap between triggers
+            "sm:rounded-md sm:bg-muted sm:p-1", // Standard TabsList appearance (bg, padding, rounding)
+            // Original responsive grid classes:
+            "sm:w-full",
+            `sm:grid-cols-2 md:grid-cols-3 lg:w-auto lg:mx-auto lg:grid-cols-${days.length > 3 ? 3 : days.length}`
+          )}
+        >
+          {days.map(day => (
+            <TabsTrigger 
+              key={`day-trigger-${day}`} 
+              value={`day-${day}`}
+              className="w-full sm:w-auto" // Triggers are full-width on mobile
+            >
               {day === 0 ? 'Pre-Conference' : `Day ${day}`}
             </TabsTrigger>
           ))}
         </TabsList>
-        {days.map(day => (
-          <TabsContent key={`day-content-${day}`} value={`day-${day}`}>
-            <div className="space-y-6 mt-8">
-              {getSortedSessionsForDay(day).map((session) => (
-                <Card key={session.id} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-xl text-primary">{session.title}</CardTitle>
-                        <CardDescription className="flex items-center text-sm mt-1">
-                          <Clock className="h-4 w-4 mr-2 text-muted-foreground" /> {session.time}
-                          <span className="mx-2 text-muted-foreground">|</span>
-                          <span className="font-semibold text-accent">{session.type}</span>
-                        </CardDescription>
-                      </div>
-                      <div className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full whitespace-nowrap">
-                        {session.location}
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{session.description}</p>
-                  </CardContent>
-                  {session.speakers.length > 0 && (
-                    <CardFooter className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                       <div className="flex items-center space-x-2 mb-2 sm:mb-0">
-                        {session.speakers.length === 1 ? <User className="h-4 w-4 text-primary" /> : <Users className="h-4 w-4 text-primary" />}
-                        <span className="text-sm font-medium">
-                          {session.speakers.map(sp => sp.name).join(', ')}
-                        </span>
-                      </div>
-                      <Button variant="outline" size="sm">
-                        <CalendarDays className="mr-2 h-4 w-4" /> Add to Calendar
-                      </Button>
-                    </CardFooter>
-                  )}
-                </Card>
-              ))}
-              {getSortedSessionsForDay(day).length === 0 && (
-                <Card className="shadow-lg">
-                  <CardContent className="p-6 text-center text-muted-foreground">
-                    No sessions scheduled for this day yet. Please check back later.
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          </TabsContent>
-        ))}
       </Tabs>
     </div>
   );
 }
-
