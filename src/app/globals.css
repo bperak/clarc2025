@@ -12,77 +12,75 @@ html {
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* Clean White */
-    --foreground: 224 71.4% 4.1%; /* Dark Blue-Gray Text */
+    --background: 220 20% 98%; /* Lighter, very subtle cool off-white */
+    --foreground: 220 40% 10%; /* Dark desaturated blue text */
 
     --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --card-foreground: 220 40% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
+    --popover-foreground: 220 40% 10%;
 
-    --primary: 207 78% 68%; /* Calm Blue #64B5F6 */
-    --primary-foreground: 0 0% 100%; /* White text on blue */
+    --primary: 180 80% 40%; /* Deeper Cyan/Teal for light bg */
+    --primary-foreground: 0 0% 100%; 
 
-    --secondary: 210 20% 96.1%; /* Light Gray for section backgrounds */
-    --secondary-foreground: 224 71.4% 4.1%;
+    --secondary: 220 30% 96%; /* Very light cool gray */
+    --secondary-foreground: 220 35% 30%;
 
-    --muted: 210 20% 96.1%;
-    --muted-foreground: 224 71.4% 40.1%; /* Medium Gray for muted text */
+    --muted: 220 30% 92%;
+    --muted-foreground: 220 25% 50%; 
 
-    --accent: 174 60% 37%; /* Soft Teal #26A69A */
-    --accent-foreground: 0 0% 100%; /* White text on teal */
+    --accent: 280 70% 55%; /* Deeper Purple/Magenta for light bg */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 88%; /* Lighter gray border */
-    --input: 210 20% 88%; /* Lighter gray input */
-    --ring: 174 60% 37%; /* Soft Teal for ring */
+    --border: 220 20% 88%; 
+    --input: 220 20% 90%; 
+    --ring: 180 80% 45%; /* Primary color for focus rings */
 
-    --radius: 0.5rem;
-
-    --chart-1: 207 78% 68%; /* Primary */
-    --chart-2: 174 60% 37%; /* Accent */
-    --chart-3: 224 71.4% 40.1%; /* Muted Foreground */
-    --chart-4: 210 20% 80%; /* Lighter gray */
-    --chart-5: 224 71.4% 20.1%; /* Darker gray */
+    --chart-1: 180 80% 40%; /* Primary */
+    --chart-2: 280 70% 55%; /* Accent */
+    --chart-3: 200 70% 50%; /* Clear Blue */
+    --chart-4: 25 80% 55%;  /* Warm Orange */
+    --chart-5: 220 25% 60%; /* Mid Cool Gray */
   }
 
   .dark {
-    --background: 224 71.4% 4.1%; /* Dark Blue-Gray */
-    --foreground: 0 0% 98%; /* Light Gray/White */
+    --background: 220 40% 8%; /* Deep, dark desaturated blue */
+    --foreground: 210 30% 90%; /* Light cool gray */
 
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 35% 12%; /* Slightly lighter than bg for cards */
+    --card-foreground: 210 30% 90%;
 
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 35% 10%; /* Similar to card or bg */
+    --popover-foreground: 210 30% 90%;
 
-    --primary: 207 78% 68%; /* Calm Blue */
-    --primary-foreground: 224 71.4% 4.1%; /* Dark text on blue for dark mode */
+    --primary: 180 90% 45%; /* Vibrant Cyan/Teal */
+    --primary-foreground: 220 40% 5%; /* Very dark, for contrast on bright primary */
 
-    --secondary: 224 71.4% 10.1%; /* Darker Gray for section backgrounds */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 30% 15%; /* Darker mid-tone for section bg */
+    --secondary-foreground: 210 25% 80%;
 
-    --muted: 224 71.4% 10.1%;
-    --muted-foreground: 0 0% 62.8%;
+    --muted: 220 25% 20%; /* For less prominent elements/text */
+    --muted-foreground: 210 20% 65%;
 
-    --accent: 174 60% 45%; /* Slightly lighter teal for dark mode */
-    --accent-foreground: 0 0% 100%;
+    --accent: 280 80% 60%; /* Vibrant Purple/Magenta */
+    --accent-foreground: 210 30% 95%; /* Very light for contrast */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 70% 55%; /* Bright Red */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 224 71.4% 15.1%;
-    --input: 224 71.4% 15.1%;
-    --ring: 174 60% 45%; /* Teal for ring */
+    --border: 220 25% 25%; /* Subtle borders */
+    --input: 220 25% 22%; /* Input background */
+    --ring: 180 90% 50%; /* Primary color for focus rings */
 
-    --chart-1: 207 78% 68%; /* Primary */
-    --chart-2: 174 60% 45%; /* Accent */
-    --chart-3: 0 0% 62.8%; /* Muted Foreground */
-    --chart-4: 224 71.4% 25.1%; /* Lighter dark gray */
-    --chart-5: 0 0% 80%; /* Lighter gray */
+    --chart-1: 180 90% 45%; /* Primary (Vibrant Cyan/Teal) */
+    --chart-2: 280 80% 60%; /* Accent (Vibrant Purple/Magenta) */
+    --chart-3: 200 60% 65%; /* A brighter, slightly desaturated blue */
+    --chart-4: 30 80% 60%;  /* Vibrant Orange as contrast */
+    --chart-5: 210 20% 50%; /* Muted cool gray */
   }
 }
 

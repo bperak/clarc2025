@@ -23,8 +23,14 @@ const sponsorsData: Sponsor[] = [
 
 const tierStyles = {
   Platinum: "border-primary shadow-primary/20",
-  Gold: "border-yellow-500 shadow-yellow-500/20",
-  Silver: "border-gray-400 shadow-gray-400/20",
+  Gold: "border-yellow-500 dark:border-yellow-400 shadow-yellow-500/20 dark:shadow-yellow-400/20",
+  Silver: "border-slate-400 dark:border-slate-500 shadow-slate-400/20 dark:shadow-slate-500/20",
+}
+
+const tierTextStyles = {
+  Platinum: "text-primary",
+  Gold: "text-yellow-500 dark:text-yellow-400",
+  Silver: "text-slate-500 dark:text-slate-400",
 }
 
 export function SponsorHighlights() {
@@ -52,7 +58,7 @@ export function SponsorHighlights() {
       {tierOrder.map(tier => (
         groupedSponsors[tier] && (
           <div key={tier} className="mb-12">
-            <h3 className={`text-2xl font-semibold text-center mb-8 text-${tier === 'Platinum' ? 'primary' : tier === 'Gold' ? 'yellow-500' : 'gray-500'}`}>{tier} Sponsors</h3>
+            <h3 className={`text-2xl font-semibold text-center mb-8 ${tierTextStyles[tier]}`}>{tier} Sponsors</h3>
             <div className={`grid grid-cols-1 sm:grid-cols-2 ${tier === 'Platinum' ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-8`}>
               {groupedSponsors[tier].map((sponsor) => (
                 <Card key={sponsor.id} className={`flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 ${tierStyles[sponsor.tier]}`}>
