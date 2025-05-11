@@ -20,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth h-full dark"> {/* Added dark class for default dark theme */}
-      <body className={`${openSans.variable} font-sans antialiased flex flex-col min-h-screen h-full`}> {/* Use Open Sans variable and font-sans */}
+    <html lang="en" className="scroll-smooth h-full dark">
+      <body 
+        className={`${openSans.variable} font-sans antialiased flex flex-col min-h-screen h-full`}
+      >
         <div className="wave-background-container" aria-hidden="true">
           <div className="wave-element wave-element-1"></div>
           <div className="wave-element wave-element-2"></div>
