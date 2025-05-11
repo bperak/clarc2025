@@ -25,21 +25,34 @@ type Session = {
 const sessionsData: Session[] = [
   // Pre-Conference Day (Day 0)
   { id: 's2', day: 0, time: '10:30 - 12:00', title: 'Workshop 1: Advanced Next.js for AI Applications', description: 'A hands-on session for Next.js enthusiasts focusing on building performant AI interfaces.', speakers: [{ name: 'Marcus Chen', id: 'sp2' }], type: 'Workshop', location: 'Room A' },
-  { id: 's7', day: 0, time: '11:00 - 12:30', title: 'Workshop 2: Deploying Scalable AI Models', description: 'Practical guide to deploying AI models in production environments.', speakers: [{ name: 'Janet Lee', id: 'sp7' }], type: 'Workshop', location: 'Room C' }, // Changed location for variety
+  { id: 's7', day: 0, time: '11:00 - 12:30', title: 'Workshop 2: Deploying Scalable AI Models', description: 'Practical guide to deploying AI models in production environments.', speakers: [{ name: 'Janet Lee', id: 'sp7' }], type: 'Workshop', location: 'Room C' },
 
   // Day 1
   { id: 's1', day: 1, time: '09:00 - 10:00', title: 'Keynote: The Future of AI Collaboration', description: 'An inspiring talk about upcoming trends in collaborative AI research and development.', speakers: [{ name: 'Dr. Evelyn Reed', id: 'sp1' }], type: 'Keynote', location: 'Main Hall' },
+  { id: 's10', day: 1, time: '10:30 - 10:50', title: 'Parallel Talk 1A: AI in Personalized Learning', description: 'Exploring how AI can tailor educational experiences for individual students. (20 min talk)', speakers: [{ name: 'Dr. Kevin Grant', id: 'sp9' }], type: 'Talk', location: 'Room A' },
+  { id: 's11', day: 1, time: '10:30 - 10:50', title: 'Parallel Talk 1B: Bias Detection in LLMs', description: 'Techniques and challenges in identifying and mitigating bias in large language models. (20 min talk)', speakers: [{ name: 'Dr. Olivia Chen', id: 'sp10' }], type: 'Talk', location: 'Room D' },
   { id: 's3', day: 1, time: '12:00 - 13:00', title: 'Lunch Break', description: 'Network with fellow attendees.', speakers: [], type: 'Break', location: 'Dining Area' },
   { id: 's4', day: 1, time: '13:00 - 14:00', title: 'Talk: Ethical Considerations in AI', description: 'Exploring the ethical landscape of artificial intelligence.', speakers: [{ name: 'Dr. Anya Sharma', id: 'sp3' }], type: 'Talk', location: 'Room B' },
   { id: 's5', day: 1, time: '14:30 - 15:30', title: 'Panel: AI in Healthcare Transformation', description: 'Experts discuss the impact of AI on healthcare.', speakers: [{ name: 'Dr. Ben Carter', id: 'sp4' }, { name: 'Dr. Sofia Ramirez', id: 'sp5' }], type: 'Panel', location: 'Main Hall' },
   
   // Day 2
   { id: 's6', day: 2, time: '09:30 - 10:30', title: 'Keynote: Bridging Human and Machine Intelligence', description: 'Exploring synergies between human cognition and AI capabilities.', speakers: [{ name: 'Prof. Leo Maxwell', id: 'sp6' }], type: 'Keynote', location: 'Main Hall' },
-  // Add more Day 2 sessions if needed
   { id: 's8', day: 2, time: '10:30 - 11:30', title: 'Talk: AI in Creative Industries', description: 'How AI is reshaping art, music, and design.', speakers: [{name: 'Alex Rivera', id: 'sp8'}], type: 'Talk', location: 'Room B'},
   { id: 's9', day: 2, time: '11:30 - 12:30', title: 'Networking Coffee Break', description: 'Connect with peers and speakers.', speakers: [], type: 'Break', location: 'Lounge Area'},
 
 ];
+
+// Helper to sort sessions by time for each day
+const getSortedSessionsForDay = (day: number): Session[] => {
+  return sessionsData
+    .filter(session => session.day === day)
+    .sort((a, b) => {
+      const timeA = a.time.split(' - ')[0];
+      const timeB = b.time.split(' - ')[0];
+      return timeA.localeCompare(timeB);
+    });
+};
+
 
 export function ClaritySchedule() {
   const days = Array.from(new Set(sessionsData.map(s => s.day))).sort((a,b) => a-b);
@@ -61,7 +74,7 @@ export function ClaritySchedule() {
         {days.map(day => (
           <TabsContent key={`day-content-${day}`} value={`day-${day}`}>
             <div className="space-y-6 mt-8">
-              {sessionsData.filter(session => session.day === day).map((session) => (
+              {getSortedSessionsForDay(day).map((session) => (
                 <Card key={session.id} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <CardHeader>
                     <div className="flex justify-between items-start">
@@ -73,7 +86,7 @@ export function ClaritySchedule() {
                           <span className="font-semibold text-accent">{session.type}</span>
                         </CardDescription>
                       </div>
-                      <div className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full">
+                      <div className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full whitespace-nowrap">
                         {session.location}
                       </div>
                     </div>
@@ -96,7 +109,7 @@ export function ClaritySchedule() {
                   )}
                 </Card>
               ))}
-              {sessionsData.filter(session => session.day === day).length === 0 && (
+              {getSortedSessionsForDay(day).length === 0 && (
                 <Card className="shadow-lg">
                   <CardContent className="p-6 text-center text-muted-foreground">
                     No sessions scheduled for this day yet. Please check back later.
@@ -110,3 +123,4 @@ export function ClaritySchedule() {
     </div>
   );
 }
+
