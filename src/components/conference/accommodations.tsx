@@ -1,0 +1,63 @@
+import Image from 'next/image';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { BedDouble, ExternalLink } from 'lucide-react';
+
+const accommodationOptions = [
+  {
+    name: "Hotel Royal",
+    description: "Luxurious accommodation with stunning sea views, offering a premium experience in Opatija.",
+    imageUrl: "https://picsum.photos/seed/hotelroyal/400/300",
+    dataAiHint: "luxury hotel room",
+    websiteUrl: "#" // Replace with actual link
+  },
+  {
+    name: "Hotel Continental",
+    description: "A charming hotel known for its historic architecture and central location, perfect for exploring Opatija.",
+    imageUrl: "https://picsum.photos/seed/hotelcontinental/400/300",
+    dataAiHint: "historic hotel facade",
+    websiteUrl: "#" // Replace with actual link
+  }
+];
+
+export function AccommodationsSection() {
+  return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-12">
+        <BedDouble className="mx-auto h-12 w-12 text-primary mb-4" />
+        <h2 className="text-3xl font-bold tracking-tight">Accommodation Options</h2>
+        <p className="text-muted-foreground mt-2">
+          Comfortable stays conveniently located near the conference venue.
+        </p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8">
+        {accommodationOptions.map((hotel) => (
+          <Card key={hotel.name} className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden">
+            <div className="relative h-60 w-full">
+              <Image
+                src={hotel.imageUrl}
+                alt={hotel.name}
+                layout="fill"
+                objectFit="cover"
+                data-ai-hint={hotel.dataAiHint}
+              />
+            </div>
+            <CardHeader className="p-6">
+              <CardTitle>{hotel.name}</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6 pt-0 flex-grow">
+              <p className="text-muted-foreground mb-4">{hotel.description}</p>
+            </CardContent>
+            <div className="p-6 pt-0 mt-auto">
+              <Button asChild variant="outline" className="w-full">
+                <a href={hotel.websiteUrl} target="_blank" rel="noopener noreferrer">
+                  View Hotel <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}

@@ -5,10 +5,13 @@ import { SpeakerShowcase } from '@/components/conference/speakers';
 import { ClarcAiAssistant } from '@/components/conference/ai-assistant';
 import { StreamlinedRegistration } from '@/components/conference/registration';
 import { SponsorHighlights } from '@/components/conference/sponsors';
+import { VenueSection } from '@/components/conference/venue';
+import { AccommodationsSection } from '@/components/conference/accommodations';
+import { AboutOpatijaSection } from '@/components/conference/about-opatija';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BrainCircuit, CalendarDays, Users, Sparkles, Ticket, Handshake, ArrowRight } from 'lucide-react';
+import { BrainCircuit, CalendarDays, Ticket } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -18,7 +21,6 @@ export default function HomePage() {
         {/* Hero Section */}
         <section id="hero" className="relative bg-gradient-to-br from-primary/80 via-primary to-accent/70 text-primary-foreground py-20 md:py-32 overflow-hidden">
           <div className="absolute inset-0 opacity-10">
-            {/* Decorative background pattern or image can be added here */}
              <Image 
                 src="https://picsum.photos/seed/conferencebg/1920/1080" 
                 alt="Abstract background" 
@@ -83,6 +85,21 @@ export default function HomePage() {
         {/* Sponsors Section */}
         <section id="sponsors" className="py-16 md:py-24 bg-secondary">
           <SponsorHighlights />
+        </section>
+
+        {/* Venue Section */}
+        <section id="venue" className="py-16 md:py-24 bg-background">
+          <VenueSection />
+        </section>
+
+        {/* Accommodations Section */}
+        <section id="accommodations" className="py-16 md:py-24 bg-secondary">
+          <AccommodationsSection />
+        </section>
+
+        {/* About Opatija Section */}
+        <section id="about-opatija" className="bg-background"> {/* No top/bottom padding here, handled by component */}
+          <AboutOpatijaSection />
         </section>
       </main>
       <Footer />

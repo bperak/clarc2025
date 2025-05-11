@@ -10,6 +10,9 @@ const navItems = [
   { href: '#ai-assistant', label: 'AI Assistant' },
   { href: '#registration', label: 'Register' },
   { href: '#sponsors', label: 'Sponsors' },
+  { href: '#venue', label: 'Venue' },
+  { href: '#accommodations', label: 'Accommodations' },
+  { href: '#about-opatija', label: 'About Opatija' },
 ];
 
 export function Header() {
@@ -22,7 +25,7 @@ export function Header() {
             CLARC 2025
           </span>
         </Link>
-        <nav className="hidden md:flex flex-1 items-center space-x-6 text-sm font-medium">
+        <nav className="hidden lg:flex flex-1 items-center space-x-4 xl:space-x-6 text-sm font-medium">
           {navItems.map((item) => (
             <Link
               key={item.label}
@@ -39,7 +42,7 @@ export function Header() {
           </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden">
+              <Button variant="outline" size="icon" className="lg:hidden">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
