@@ -24,6 +24,8 @@ const speakersData: Speaker[] = [
   { id: 'sp4', name: 'Dr. Ben Carter', title: 'Lead AI Researcher, HealthForward AI', bio: 'Innovating at the intersection of AI and healthcare, Dr. Carter is dedicated to improving patient outcomes through technology.', photoUrl: 'https://picsum.photos/seed/ben/300/300', dataAiHint: 'doctor man', socials: { linkedin: '#', twitter: '#' } },
   { id: 'sp5', name: 'Dr. Sofia Ramirez', title: 'AI Ethicist & Policy Advisor', bio: 'Dr. Ramirez advises governments and organizations on creating ethical AI policies and frameworks.', photoUrl: 'https://picsum.photos/seed/sofia/300/300', dataAiHint: 'advisor woman', socials: { linkedin: '#', twitter: '#' } },
   { id: 'sp6', name: 'Prof. Leo Maxwell', title: 'Cognitive Science Chair, Institute of Mind Studies', bio: 'A renowned expert in human-computer interaction and the cognitive aspects of AI.', photoUrl: 'https://picsum.photos/seed/leo/300/300', dataAiHint: 'professor man', socials: { linkedin: '#', twitter: '#' } },
+  { id: 'sp7', name: 'Janet Lee', title: 'Lead DevOps Engineer, CloudScale Inc.', bio: 'Specializing in scalable AI infrastructure and MLOps, Janet ensures models perform reliably.', photoUrl: 'https://picsum.photos/seed/janet/300/300', dataAiHint: 'engineer woman', socials: { linkedin: '#', twitter: '#' } },
+  { id: 'sp8', name: 'Alex Rivera', title: 'Digital Artist & AI Researcher', bio: 'Exploring the fusion of AI and creativity, Alex produces stunning visual art and tools.', photoUrl: 'https://picsum.photos/seed/alexrivera/300/300', dataAiHint: 'artist person', socials: { linkedin: '#', twitter: '#' } },
 ];
 
 export function SpeakerShowcase() {
