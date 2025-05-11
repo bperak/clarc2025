@@ -1,8 +1,9 @@
 /**
  * @fileOverview ClaritySchedule component displays the conference schedule using tabs for different days.
  * It fetches session data and organizes it by day, allowing users to switch between days.
- * On mobile, the tab selection buttons are displayed as a column below the content of the selected day.
- * On larger screens, tabs are displayed horizontally above the content.
+ * On mobile, the tab selection buttons are displayed as a column.
+ * On larger screens, tabs are displayed horizontally.
+ * The TabsList is always positioned above the TabsContent.
  */
 "use client";
 
@@ -71,13 +72,41 @@ export function ClaritySchedule() {
         Explore our diverse range of talks, workshops, and networking opportunities.
       </p>
       <Tabs defaultValue={`day-${days[0]}`} className="w-full flex flex-col">
-        {/* Tab Content - visually first on mobile */}
-        <div className="order-1 sm:order-2 w-full">
+        {/* Tab List - Always above content */}
+        <TabsList 
+          className={cn(
+            "order-1 mb-8", // Ensure TabsList is first and has bottom margin
+
+            // Mobile specific styling for the list (column layout):
+            "flex flex-col w-full gap-2", 
+            "p-0 bg-transparent rounded-none", 
+
+            // sm and up styling for the list (row/grid layout):
+            "sm:grid sm:gap-1", 
+            "sm:rounded-md sm:bg-muted sm:p-1", 
+            "sm:w-full",
+            // Responsive grid columns for sm+
+            `sm:grid-cols-2 md:grid-cols-3 lg:w-auto lg:mx-auto lg:grid-cols-${days.length > 3 ? 3 : days.length}`
+          )}
+        >
+          {days.map(day => (
+            <TabsTrigger 
+              key={`day-trigger-${day}`} 
+              value={`day-${day}`}
+              className="w-full sm:w-auto" // Triggers are full-width on mobile, auto on sm+
+            >
+              {day === 0 ? 'Pre-Conference' : `Day ${day}`}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        
+        {/* Tab Content - Always below TabsList */}
+        <div className="order-2 w-full">
           {days.map(day => (
             <TabsContent 
               key={`day-content-${day}`} 
               value={`day-${day}`}
-              className="sm:mt-8" // Margin top for sm+ screens for space below TabsList
+              // No sm:mt-8 needed here as TabsList provides spacing with mb-8
             >
               <div className="space-y-6">
                 {getSortedSessionsForDay(day).map((session) => (
@@ -126,36 +155,8 @@ export function ClaritySchedule() {
             </TabsContent>
           ))}
         </div>
-
-        {/* Tab List - visually second on mobile (column), first on sm+ (row/grid) */}
-        <TabsList 
-          className={cn(
-            "order-2 sm:order-1", // Flex order for visual positioning
-            "mt-8 sm:mt-0",      // Margin top on mobile (TabsList below content), none for sm+
-
-            // Mobile specific styling for the list:
-            "flex flex-col w-full gap-2", // Stack buttons, full width, with gap
-            "p-0 bg-transparent rounded-none", // Remove TabsList's own padding, bg, rounding for mobile
-
-            // sm and up styling for the list (restore default look & apply grid):
-            "sm:grid sm:gap-1", // Use grid for layout, gap between triggers
-            "sm:rounded-md sm:bg-muted sm:p-1", // Standard TabsList appearance (bg, padding, rounding)
-            // Original responsive grid classes:
-            "sm:w-full",
-            `sm:grid-cols-2 md:grid-cols-3 lg:w-auto lg:mx-auto lg:grid-cols-${days.length > 3 ? 3 : days.length}`
-          )}
-        >
-          {days.map(day => (
-            <TabsTrigger 
-              key={`day-trigger-${day}`} 
-              value={`day-${day}`}
-              className="w-full sm:w-auto" // Triggers are full-width on mobile
-            >
-              {day === 0 ? 'Pre-Conference' : `Day ${day}`}
-            </TabsTrigger>
-          ))}
-        </TabsList>
       </Tabs>
     </div>
   );
 }
+
