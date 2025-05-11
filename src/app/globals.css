@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Define animation keyframes */
+@keyframes animatedBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  color: hsl(var(--foreground));
+  /* Animated background: A subtle gradient that slowly shifts */
+  background: linear-gradient(-45deg, hsl(var(--background-start)), hsl(var(--background-mid)), hsl(var(--background-end)), hsl(var(--background-mid)));
+  background-size: 400% 400%; /* Needs to be larger than 100% for movement */
+  animation: animatedBackground 20s ease infinite; /* Adjust duration for speed */
 }
 
 html {
@@ -12,8 +24,13 @@ html {
 
 @layer base {
   :root {
-    --background: 220 20% 98%; /* Lighter, very subtle cool off-white */
+    --background: 220 20% 98%; /* Lighter, very subtle cool off-white - still used by components */
     --foreground: 220 40% 10%; /* Dark desaturated blue text */
+
+    /* Colors for animated gradient background - Light Theme */
+    --background-start: hsl(220, 20%, 97%);
+    --background-mid:   hsl(220, 25%, 99%);
+    --background-end:   hsl(210, 20%, 98%);
 
     --card: 0 0% 100%;
     --card-foreground: 220 40% 10%;
@@ -39,6 +56,8 @@ html {
     --border: 220 20% 88%; 
     --input: 220 20% 90%; 
     --ring: 180 80% 45%; /* Primary color for focus rings */
+    
+    --radius: 0.8rem; /* Increased for more rounded corners */
 
     --chart-1: 180 80% 40%; /* Primary */
     --chart-2: 280 70% 55%; /* Accent */
@@ -48,8 +67,13 @@ html {
   }
 
   .dark {
-    --background: 220 40% 8%; /* Deep, dark desaturated blue */
+    --background: 220 40% 8%; /* Deep, dark desaturated blue - still used by components */
     --foreground: 210 30% 90%; /* Light cool gray */
+
+    /* Colors for animated gradient background - Dark Theme */
+    --background-start: hsl(220, 40%, 7%);
+    --background-mid:   hsl(220, 35%, 10%);
+    --background-end:   hsl(230, 40%, 8%);
 
     --card: 220 35% 12%; /* Slightly lighter than bg for cards */
     --card-foreground: 210 30% 90%;
@@ -76,6 +100,8 @@ html {
     --input: 220 25% 22%; /* Input background */
     --ring: 180 90% 50%; /* Primary color for focus rings */
 
+    --radius: 0.8rem; /* Increased for more rounded corners */
+
     --chart-1: 180 90% 45%; /* Primary (Vibrant Cyan/Teal) */
     --chart-2: 280 80% 60%; /* Accent (Vibrant Purple/Magenta) */
     --chart-3: 200 60% 65%; /* A brighter, slightly desaturated blue */
@@ -89,6 +115,8 @@ html {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    /* bg-background and text-foreground are now handled by direct body styles and inherited --foreground */
+    /* This ensures the animated background takes precedence. */
+    /* If other base body utilities were here, they'd remain. */
   }
 }
