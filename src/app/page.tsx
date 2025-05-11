@@ -19,31 +19,36 @@ export default function HomePage() {
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section id="hero" className="relative bg-gradient-to-br from-primary/80 via-primary to-accent/70 text-primary-foreground py-20 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
+        <section id="hero" className="relative text-primary-foreground py-24 md:py-40 overflow-hidden">
+          {/* Enhanced background image layer */}
+          <div className="absolute inset-0 z-0">
              <Image 
-                src="https://picsum.photos/seed/conferencebg/1920/1080" 
-                alt="Abstract background" 
+                src="https://picsum.photos/seed/futuretech/1920/1080" 
+                alt="Futuristic abstract network connections" 
                 layout="fill" 
                 objectFit="cover"
-                data-ai-hint="abstract network"
+                className="opacity-20" // Slightly increased opacity for more presence
+                data-ai-hint="abstract technology"
+                priority
              />
+             {/* Gradient overlay for depth */}
+             <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-transparent to-accent/60 opacity-75"></div>
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <BrainCircuit className="mx-auto h-16 w-16 mb-6" />
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+            <BrainCircuit className="mx-auto h-20 w-20 mb-8 text-background drop-shadow-lg" />
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-background drop-shadow-md">
               CLARC 2025: <span className="block sm:inline">Bridging Minds</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-2xl text-primary-foreground/90 mb-10">
+            <p className="max-w-3xl mx-auto text-xl sm:text-2xl md:text-3xl text-background/90 mb-12 drop-shadow-sm">
               Join leading researchers, innovators, and thinkers to explore the future of Artificial Intelligence and collaborative discovery.
             </p>
-            <div className="space-x-0 space-y-4 sm:space-y-0 sm:space-x-4">
-              <Button size="lg" asChild className="bg-background text-foreground hover:bg-background/90 shadow-lg transition-transform hover:scale-105">
+            <div className="space-x-0 space-y-4 sm:space-y-0 sm:space-x-6">
+              <Button size="lg" asChild className="bg-background text-foreground hover:bg-background/90 shadow-xl transition-transform hover:scale-105 duration-300 ease-out">
                 <Link href="#registration">
                   Register Now <Ticket className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 shadow-lg transition-transform hover:scale-105">
+              <Button size="lg" variant="outline" asChild className="border-background/80 text-background hover:bg-background/10 shadow-xl transition-transform hover:scale-105 duration-300 ease-out">
                 <Link href="#schedule">
                   View Schedule <CalendarDays className="ml-2 h-5 w-5" />
                 </Link>
