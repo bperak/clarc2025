@@ -54,7 +54,12 @@ export default function HomePage() {
                   Register Now <Ticket className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="border-primary-foreground/80 text-primary-foreground hover:bg-primary-foreground/10 hover:text-background shadow-xl transition-transform hover:scale-105 duration-300 ease-out">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                asChild 
+                className="border-primary-foreground/80 text-primary-foreground hover:bg-primary-foreground/10 hover:text-background shadow-xl transition-transform hover:scale-105 duration-300 ease-out"
+              >
                 <Link href="#schedule">
                   View Schedule <CalendarDays className="ml-2 h-5 w-5" />
                 </Link>
@@ -79,7 +84,7 @@ export default function HomePage() {
         </section>
 
         {/* Speakers Section */}
-        <section id="speakers" className="py-16 md:py-24 bg-background">
+        <section id="speakers" className="py-16 md:py-24 bg-muted"> {/* Changed background to bg-muted for distinction */}
           <SpeakerShowcase />
         </section>
 
