@@ -1,4 +1,5 @@
 
+
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { ClaritySchedule } from '@/components/conference/schedule';
@@ -24,7 +25,7 @@ export default function HomePage() {
           {/* Enhanced background image layer */}
           <div className="absolute inset-0 z-0">
              <Image 
-                src="https://picsum.photos/seed/futurewave/1920/1080" 
+                src="https://www.adrionik.com/img/site/accommod_region_photos/icon/4_001.jpg" 
                 alt="Futuristic abstract network connections representing Opatija's blend of history and technology" 
                 layout="fill" 
                 objectFit="cover"
