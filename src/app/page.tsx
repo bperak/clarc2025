@@ -1,3 +1,4 @@
+
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { ClaritySchedule } from '@/components/conference/schedule';
@@ -23,12 +24,12 @@ export default function HomePage() {
           {/* Enhanced background image layer */}
           <div className="absolute inset-0 z-0">
              <Image 
-                src="https://picsum.photos/seed/futuretech/1920/1080" 
-                alt="Futuristic abstract network connections" 
+                src="https://picsum.photos/seed/futurewave/1920/1080" 
+                alt="Futuristic abstract network connections representing Opatija's blend of history and technology" 
                 layout="fill" 
                 objectFit="cover"
-                className="opacity-20" // Slightly increased opacity for more presence
-                data-ai-hint="abstract technology"
+                className="opacity-20" 
+                data-ai-hint="futuristic Opatija"
                 priority
              />
              {/* Gradient overlay for depth */}
@@ -36,10 +37,10 @@ export default function HomePage() {
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <BrainCircuit className="mx-auto h-20 w-20 mb-8 text-background drop-shadow-lg" />
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-background drop-shadow-md">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-primary-foreground drop-shadow-md">
               CLARC 2025: <span className="block sm:inline">Bridging Minds</span>
             </h1>
-            <p className="max-w-3xl mx-auto text-xl sm:text-2xl md:text-3xl text-background/90 mb-12 drop-shadow-sm">
+            <p className="max-w-3xl mx-auto text-xl sm:text-2xl md:text-3xl text-primary-foreground mb-12 drop-shadow-sm">
               Join leading researchers, innovators, and thinkers to explore the future of Artificial Intelligence and collaborative discovery.
             </p>
             <div className="space-x-0 space-y-4 sm:space-y-0 sm:space-x-6">
