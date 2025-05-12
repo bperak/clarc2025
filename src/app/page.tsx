@@ -63,10 +63,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* About Section (Optional - simple text for now) */}
-        <section id="about" className="py-16 md:py-24 bg-background">
+        {/* About Section */}
+        <section id="about" className="py-16 md:py-24 bg-muted"> {/* Changed background to bg-muted */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">About CLARC 2025</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">About CLARC 2025</h2>
             <p className="max-w-3xl mx-auto text-muted-foreground text-lg">
               CLARC 2025 is more than just a conference; it's a confluence of ideas, a platform for groundbreaking discussions, and a catalyst for future collaborations in the realm of Artificial Intelligence. We aim to bridge the gap between theoretical research and practical application, fostering an environment where minds meet and innovation thrives.
             </p>
@@ -117,4 +117,3 @@ export default function HomePage() {
     </>
   );
 }
-
