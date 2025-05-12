@@ -44,7 +44,12 @@ export default function HomePage() {
               Join leading researchers, innovators, and thinkers to explore the future of Artificial Intelligence and collaborative discovery.
             </p>
             <div className="space-x-0 space-y-4 sm:space-y-0 sm:space-x-6">
-              <Button size="lg" asChild className="bg-background text-foreground hover:bg-background/90 shadow-xl transition-transform hover:scale-105 duration-300 ease-out">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                asChild 
+                className="border-primary-foreground/80 text-primary-foreground hover:bg-primary-foreground/10 hover:text-background shadow-xl transition-transform hover:scale-105 duration-300 ease-out"
+              >
                 <Link href="#registration">
                   Register Now <Ticket className="ml-2 h-5 w-5" />
                 </Link>
@@ -112,3 +117,4 @@ export default function HomePage() {
     </>
   );
 }
+
