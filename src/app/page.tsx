@@ -105,7 +105,7 @@ export default function HomePage() {
         </section>
 
         {/* Venue Section */}
-        <section id="venue" className="py-16 md:py-24 bg-background">
+        <section id="venue" className="py-16 md:py-24 bg-muted"> {/* Changed background to bg-muted for a darker bluish tone */}
           <VenueSection />
         </section>
 
@@ -123,3 +123,4 @@ export default function HomePage() {
     </>
   );
 }
+
