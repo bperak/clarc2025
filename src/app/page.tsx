@@ -94,7 +94,7 @@ export default function HomePage() {
         </section>
 
         {/* Registration Section */}
-        <section id="registration" className="py-16 md:py-24 bg-background">
+        <section id="registration" className="py-16 md:py-24 bg-muted"> {/* Changed background to bg-muted */}
           <StreamlinedRegistration />
         </section>
 
