@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { Menu, BrainCircuit } from 'lucide-react';
+import { LanguageSwitcher } from './language-switcher'; // Corrected import path
+import * as SheetPrimitive from "@radix-ui/react-dialog";
+
 
 const navItems = [
   { href: '#hero', label: 'Home' },
@@ -19,7 +22,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center">
-        <Link href="#hero" className="mr-6 flex items-center space-x-2">
+        <Link href="#hero" className="mr-6 pl-2 flex items-center space-x-2">
           <BrainCircuit className="h-6 w-6 text-primary" />
           <span className="font-bold sm:inline-block">
             CLARC 2025
@@ -37,6 +40,7 @@ export function Header() {
           ))}
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-4">
+          <LanguageSwitcher />
           <Button asChild className="hidden md:inline-flex">
             <Link href="#registration">Register Now</Link>
           </Button>
@@ -48,11 +52,17 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+               <SheetPrimitive.Title className="sr-only">Navigation Menu</SheetPrimitive.Title>
+               <SheetPrimitive.Description className="sr-only">
+                 A list of navigation links to explore the site.
+               </SheetPrimitive.Description>
               <nav className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
+                    // Ensure Sheet closes on navigation for better UX
+                    // This requires passing down a function from SheetTrigger or managing Sheet's open state
                     className="text-lg font-medium transition-colors hover:text-primary"
                   >
                     {item.label}
