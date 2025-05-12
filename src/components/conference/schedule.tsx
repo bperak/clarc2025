@@ -7,6 +7,7 @@
  */
 "use client";
 
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -63,7 +64,16 @@ const getSortedSessionsForDay = (day: number): Session[] => {
 
 
 export function ClaritySchedule() {
+  const { t } = useTranslation();
   const days = Array.from(new Set(sessionsData.map(s => s.day))).sort((a,b) => a-b);
+
+  const sessionTypeTranslations = {
+    Keynote: t('sessionTypeKeynote'),
+    Workshop: t('sessionTypeWorkshop'),
+    Talk: t('sessionTypeTalk'),
+    Panel: t('sessionTypePanel'),
+    Break: t('sessionTypeBreak'),
+  };
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,7 +105,7 @@ export function ClaritySchedule() {
               value={`day-${day}`}
               className="w-full sm:w-auto" // Triggers are full-width on mobile, auto on sm+
             >
-              {day === 0 ? 'Pre-Conference' : `Day ${day}`}
+              {day === 0 ? t('preConferenceTab') : `${t('dayTab')}${day}`}
             </TabsTrigger>
           ))}
         </TabsList>
@@ -114,11 +124,11 @@ export function ClaritySchedule() {
                     <CardHeader>
                       <div className="flex justify-between items-start">
                         <div>
-                          <CardTitle className="text-xl text-primary">{session.title}</CardTitle>
+                          <CardTitle className="text-xl text-primary">{t(`session_${session.id}_title`)}</CardTitle>
                           <CardDescription className="flex items-center text-sm mt-1">
                             <Clock className="h-4 w-4 mr-2 text-muted-foreground" /> {session.time}
                             <span className="mx-2 text-muted-foreground">|</span>
-                            <span className="font-semibold text-accent">{session.type}</span>
+                            <span className="font-semibold text-accent">{sessionTypeTranslations[session.type]}</span>
                           </CardDescription>
                         </div>
                         <div className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full whitespace-nowrap">
@@ -127,7 +137,7 @@ export function ClaritySchedule() {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">{session.description}</p>
+                      <p className="text-muted-foreground">{t(`session_${session.id}_description`)}</p>
                     </CardContent>
                     {session.speakers.length > 0 && (
                       <CardFooter className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
@@ -138,7 +148,7 @@ export function ClaritySchedule() {
                           </span>
                         </div>
                         <Button variant="outline" size="sm">
-                          <CalendarDays className="mr-2 h-4 w-4" /> Add to Calendar
+                          <CalendarDays className="mr-2 h-4 w-4" /> {t('addToCalendarButtonText')}
                         </Button>
                       </CardFooter>
                     )}
@@ -147,7 +157,7 @@ export function ClaritySchedule() {
                 {getSortedSessionsForDay(day).length === 0 && (
                   <Card className="shadow-lg">
                     <CardContent className="p-6 text-center text-muted-foreground">
-                      No sessions scheduled for this day yet. Please check back later.
+                      {t('noSessionsScheduled')}
                     </CardContent>
                   </Card>
                 )}

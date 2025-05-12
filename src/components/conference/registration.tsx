@@ -11,12 +11,13 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Ticket, Banknote, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const registrationFormSchema = z.object({
-  fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
-  email: z.string().email({ message: "Invalid email address." }),
+  fullName: z.string().min(2, { message: 'fullNameMinLengthError' }),
+  email: z.string().email({ message: 'emailInvalidError' }),
   organization: z.string().optional(),
-  ticketType: z.enum(['student', 'professional', 'vip'], { required_error: "Please select a ticket type." }),
+ ticketType: z.enum(['student', 'professional', 'vip'], { required_error: 'ticketTypeRequiredError' }),
 });
 
 type RegistrationFormValues = z.infer<typeof registrationFormSchema>;
@@ -24,6 +25,7 @@ type RegistrationFormValues = z.infer<typeof registrationFormSchema>;
 export function StreamlinedRegistration() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { t } = useTranslation();
 
   const form = useForm<RegistrationFormValues>({
     resolver: zodResolver(registrationFormSchema),
@@ -38,8 +40,8 @@ export function StreamlinedRegistration() {
     console.log("Registration Data:", data);
     // Simulate API call
     toast({
-      title: "Registration Submitted!",
-      description: "Thank you for registering for CLARC 2025. We've sent a confirmation to your email.",
+      title: t('registrationSubmittedToastTitle'),
+      description: t('registrationSubmittedToastDescription'),
     });
     setIsSubmitted(true);
     form.reset();
@@ -53,18 +55,18 @@ export function StreamlinedRegistration() {
             <div className="flex justify-center items-center mb-4">
               <CheckCircle className="h-16 w-16 text-green-500" />
             </div>
-            <CardTitle className="text-2xl">Registration Successful!</CardTitle>
+            <CardTitle className="text-2xl">{t('registrationSuccessTitle')}</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-4">
-              Thank you for registering for CLARC 2025. A confirmation email with your ticket details and payment instructions has been sent to your email address.
+ {t('registrationSuccessMessage1')}
             </p>
             <p className="text-sm text-muted-foreground">
-              We look forward to seeing you at the conference!
+ {t('registrationSuccessMessage2')}
             </p>
           </CardContent>
           <CardFooter>
-            <Button onClick={() => setIsSubmitted(false)} className="w-full">Register Another Person</Button>
+            <Button onClick={() => setIsSubmitted(false)} className="w-full">{t('registerAnotherPersonButtonText')}</Button>
           </CardFooter>
         </Card>
       </div>
@@ -79,8 +81,8 @@ export function StreamlinedRegistration() {
           <div className="flex justify-center items-center mb-2">
             <Ticket className="h-8 w-8 text-primary" />
           </div>
-          <CardTitle className="text-2xl">Register for CLARC 2025</CardTitle>
-          <CardDescription>Secure your spot at the premier AI conference of the year.</CardDescription>
+          <CardTitle className="text-2xl">{t('registrationTitle')}</CardTitle>
+          <CardDescription>{t('registrationDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -90,9 +92,9 @@ export function StreamlinedRegistration() {
                 name="fullName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel>{t('fullNameLabel')}</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., Ada Lovelace" {...field} />
+                      <Input placeholder={t('fullNamePlaceholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -103,9 +105,9 @@ export function StreamlinedRegistration() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email Address</FormLabel>
+                    <FormLabel>{t('emailLabel')}</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="e.g., ada@example.com" {...field} />
+                      <Input type="email" placeholder={t('emailPlaceholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -116,9 +118,9 @@ export function StreamlinedRegistration() {
                 name="organization"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Organization (Optional)</FormLabel>
+                    <FormLabel>{t('organizationLabel')}</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., Babbage Labs" {...field} />
+                      <Input placeholder={t('organizationPlaceholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -129,17 +131,17 @@ export function StreamlinedRegistration() {
                 name="ticketType"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Ticket Type</FormLabel>
+                    <FormLabel>{t('ticketTypeLabel')}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a ticket type" />
+                          <SelectValue placeholder={t('ticketTypePlaceholder')} />
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent>
-                        <SelectItem value="student">Student ($99)</SelectItem>
-                        <SelectItem value="professional">Professional ($299)</SelectItem>
-                        <SelectItem value="vip">VIP ($499 - includes workshop access)</SelectItem>
+                      <SelectContent> 
+                        <SelectItem value="student">{t('ticketTypeStudent')}99)</SelectItem>
+                        <SelectItem value="professional">{t('ticketTypeProfessional')}299)</SelectItem>
+                        <SelectItem value="vip">{t('ticketTypeVIP')}499 - {t('includesWorkshopAccess')})</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -147,17 +149,16 @@ export function StreamlinedRegistration() {
                 )}
               />
               <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                {form.formState.isSubmitting ? 'Processing...' : 'Register & Proceed to Payment'}
+                {form.formState.isSubmitting ? t('registerButtonProcessing') : t('registerButtonDefault')}
               </Button>
             </form>
           </Form>
         </CardContent>
         <CardFooter className="flex flex-col items-start">
           <div className="mt-4 p-4 bg-secondary rounded-md w-full">
-            <h4 className="font-semibold text-md mb-2 flex items-center"><Banknote className="h-5 w-5 mr-2 text-primary"/> Payment Instructions</h4>
+            <h4 className="font-semibold text-md mb-2 flex items-center"><Banknote className="h-5 w-5 mr-2 text-primary"/> {t('paymentInstructionsTitle')}</h4>
             <p className="text-sm text-muted-foreground">
-              After submitting your registration, you will be redirected to our secure payment portal.
-              We accept all major credit cards and PayPal. Early bird discount ends soon!
+ {t('paymentInstructionsText')}
             </p>
           </div>
         </CardFooter>

@@ -13,11 +13,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Sparkles, User, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from 'react-i18next';
 
 const formSchema = z.object({
-  question: z.string().min(5, { message: "Question must be at least 5 characters." }),
+  question: z.string().min(5, { message: "questionMinLengthError" }),
 });
-
 type FormValues = z.infer<typeof formSchema>;
 
 type ChatMessage = {
@@ -30,6 +30,7 @@ export function ClarcAiAssistant() {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -50,11 +51,11 @@ export function ClarcAiAssistant() {
       setChatHistory(prev => [...prev, aiMessage]);
     } catch (error) {
       console.error("Error getting AI response:", error);
-      const errorMessage: ChatMessage = { id: (Date.now() + 1).toString(), type: 'ai', message: "Sorry, I couldn't process your request right now. Please try again later." };
+      const errorMessage: ChatMessage = { id: (Date.now() + 1).toString(), type: 'ai', message: t('aiAssistantErrorMessage') };
       setChatHistory(prev => [...prev, errorMessage]);
       toast({
-        title: "AI Assistant Error",
-        description: "There was an issue communicating with the AI. Please check your connection or try again.",
+        title: t('aiAssistantToastTitle'),
+        description: t('aiAssistantToastDescription'),
         variant: "destructive",
       });
     } finally {
