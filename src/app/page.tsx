@@ -36,7 +36,7 @@ export default function HomePage() {
              <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-transparent to-accent/60 opacity-75"></div>
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <BrainCircuit className="mx-auto h-20 w-20 mb-8 text-background drop-shadow-lg" />
+            <BrainCircuit className="mx-auto h-20 w-20 mb-8 text-primary-foreground drop-shadow-lg" />
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-primary-foreground drop-shadow-md">
               CLARC 2025: <span className="block sm:inline">Bridging Minds</span>
             </h1>
