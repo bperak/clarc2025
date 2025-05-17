@@ -125,5 +125,21 @@
   "venue.mainTitle": "Conference Venue",
   "venue.mainDescription": "The conference will be held at the prestigious Grand Hotel 4 Opatijska Cvijeta.",
   "venue.hotelSpecificDescription": "Experience the elegance and comfort of one of Opatija's finest hotels, offering state-of-the-art conference facilities and breathtaking sea views.",
-  "venue.visitHotelButtonText": "Visit Hotel Website"
+  "venue.visitHotelButtonText": "Visit Hotel Website",
+
+  "emailPreview.title": "Your CLARC 2025 Registration Confirmation (Preview)",
+  "emailPreview.previewNote": "This is a preview of the email you will receive.",
+  "emailPreview.greeting": "Dear {{fullName}},",
+  "emailPreview.body1": "Thank you for registering for CLARC 2025! We are thrilled to have you join us for this exciting event.",
+  "emailPreview.detailsHeader": "Here are your registration details:",
+  "emailPreview.fullNameLabel": "Full Name",
+  "emailPreview.emailLabel": "Email",
+  "emailPreview.organizationLabel": "Organization",
+  "emailPreview.ticketTypeLabel": "Ticket Type",
+  "emailPreview.paymentInfoPlaceholder": "You will receive separate instructions regarding payment if applicable. Please check your inbox for a message from payments@clarc2025.org or similar.",
+  "emailPreview.closing": "We look forward to welcoming you to Opatija!",
+  "emailPreview.signature": "Sincerely,\nThe CLARC 2025 Organizing Team",
+  "ticketTypeStudentEmail": "Student Ticket ($99)",
+  "ticketTypeProfessionalEmail": "Professional Ticket ($299)",
+  "ticketTypeVIPEmail": "VIP Ticket ($499 - includes workshop access)"
 }
