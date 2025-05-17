@@ -1,8 +1,11 @@
+"use client";
+
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Linkedin, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 type Speaker = {
   id: string;
@@ -29,11 +32,13 @@ const speakersData: Speaker[] = [
 ];
 
 export function SpeakerShowcase() {
+  const { t } = useTranslation();
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-3xl font-bold tracking-tight text-center mb-2">Meet Our Speakers</h2>
+      <h2 className="text-3xl font-bold tracking-tight text-center mb-2">{t('speakers.mainTitle')}</h2>
       <p className="text-muted-foreground text-center mb-10">
-        Learn from industry leaders and academic pioneers at the forefront of AI.
+        {t('speakers.mainDescription')}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {speakersData.map((speaker) => (

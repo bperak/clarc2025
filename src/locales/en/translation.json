@@ -113,5 +113,17 @@
 
   "footer.inCollaborationWith": "In collaboration with",
   "footer.immersiveExperience": "Join us for an immersive experience into the future of AI and collaborative research.",
-  "footer.copyright": "© {{year}} CLARC Conference. All rights reserved."
+  "footer.copyright": "© {{year}} CLARC Conference. All rights reserved.",
+
+  "speakers.mainTitle": "Meet Our Speakers",
+  "speakers.mainDescription": "Learn from industry leaders and academic pioneers at the forefront of AI.",
+  "sponsors.mainTitle": "Our Valued Sponsors",
+  "sponsors.mainDescription": "We are grateful for the support of these organizations that make CLARC 2025 possible.",
+  "sponsors.platinumTierTitle": "Platinum Sponsors",
+  "sponsors.goldTierTitle": "Gold Sponsors",
+  "sponsors.silverTierTitle": "Silver Sponsors",
+  "venue.mainTitle": "Conference Venue",
+  "venue.mainDescription": "The conference will be held at the prestigious Grand Hotel 4 Opatijska Cvijeta.",
+  "venue.hotelSpecificDescription": "Experience the elegance and comfort of one of Opatija's finest hotels, offering state-of-the-art conference facilities and breathtaking sea views.",
+  "venue.visitHotelButtonText": "Visit Hotel Website"
 }

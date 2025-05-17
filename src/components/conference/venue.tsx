@@ -1,16 +1,21 @@
+"use client";
+
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MapPin, Hotel } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function VenueSection() {
+  const { t } = useTranslation();
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
         <Hotel className="mx-auto h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold tracking-tight">Conference Venue</h2>
+        <h2 className="text-3xl font-bold tracking-tight">{t('venue.mainTitle')}</h2>
         <p className="text-muted-foreground mt-2">
-          The conference will be held at the prestigious Grand Hotel 4 Opatijska Cvijeta.
+          {t('venue.mainDescription')}
         </p>
       </div>
       <Card className="max-w-3xl mx-auto shadow-xl overflow-hidden rounded-lg">
@@ -34,11 +39,11 @@ export function VenueSection() {
             </CardHeader>
             <CardContent className="p-0">
               <p className="text-muted-foreground mb-6">
-                Experience the elegance and comfort of one of Opatija's finest hotels, offering state-of-the-art conference facilities and breathtaking sea views.
+                {t('venue.hotelSpecificDescription')}
               </p>
               <Button asChild>
                 <a href="https://www.liburnia.hr/en/hotel-grand-4-opatijska-cvijeta" target="_blank" rel="noopener noreferrer">
-                  Visit Hotel Website
+                  {t('venue.visitHotelButtonText')}
                 </a>
               </Button>
             </CardContent>

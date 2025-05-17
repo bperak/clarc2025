@@ -1,6 +1,9 @@
+"use client";
+
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Handshake } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 type Sponsor = {
   id: string;
@@ -34,6 +37,8 @@ const tierTextStyles = {
 }
 
 export function SponsorHighlights() {
+  const { t } = useTranslation();
+
   const groupedSponsors = sponsorsData.reduce((acc, sponsor) => {
     if (!acc[sponsor.tier]) {
       acc[sponsor.tier] = [];
@@ -44,21 +49,26 @@ export function SponsorHighlights() {
 
   const tierOrder: ('Platinum' | 'Gold' | 'Silver')[] = ['Platinum', 'Gold', 'Silver'];
 
+  const tierTitles = {
+    Platinum: t('sponsors.platinumTierTitle'),
+    Gold: t('sponsors.goldTierTitle'),
+    Silver: t('sponsors.silverTierTitle'),
+  };
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
         <Handshake className="mx-auto h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold tracking-tight">Our Valued Sponsors</h2>
+        <h2 className="text-3xl font-bold tracking-tight">{t('sponsors.mainTitle')}</h2>
         <p className="text-muted-foreground mt-2">
-          We are grateful for the support of these organizations that make CLARC 2025 possible.
+          {t('sponsors.mainDescription')}
         </p>
       </div>
 
       {tierOrder.map(tier => (
         groupedSponsors[tier] && (
           <div key={tier} className="mb-12">
-            <h3 className={`text-2xl font-semibold text-center mb-8 ${tierTextStyles[tier]}`}>{tier} Sponsors</h3>
+            <h3 className={`text-2xl font-semibold text-center mb-8 ${tierTextStyles[tier]}`}>{tierTitles[tier]}</h3>
             <div className={`grid grid-cols-1 sm:grid-cols-2 ${tier === 'Platinum' ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-8`}>
               {groupedSponsors[tier].map((sponsor) => (
                 <Card key={sponsor.id} className={`flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 ${tierStyles[sponsor.tier]}`}>

@@ -77,9 +77,9 @@ export function ClaritySchedule() {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-3xl font-bold tracking-tight text-center mb-2">Conference Schedule</h2>
+      <h2 className="text-3xl font-bold tracking-tight text-center mb-2">{t('scheduleTitle')}</h2>
       <p className="text-muted-foreground text-center mb-10">
-        Explore our diverse range of talks, workshops, and networking opportunities.
+        {t('scheduleDescription')}
       </p>
       <Tabs defaultValue={`day-${days[0]}`} className="w-full flex flex-col">
         {/* Tab List - Always above content */}
@@ -169,4 +169,3 @@ export function ClaritySchedule() {
     </div>
   );
 }
-

@@ -103,5 +103,29 @@
 
   "footer.inCollaborationWith": "U suradnji s",
   "footer.immersiveExperience": "Pridružite nam se za uranjajuće iskustvo u budućnost AI i kolaborativnog istraživanja.",
-  "footer.copyright": "© {{year}} CLARC Konferencija. Sva prava pridržana."
+  "footer.copyright": "© {{year}} CLARC Konferencija. Sva prava pridržana.",
+  
+  "aiAssistantTitle": "CLARC AI Asistent",
+  "aiAssistantDescription": "Pitaj me bilo što o CLARC 2025!",
+  "aiAssistantNoMessages": "Još nema poruka. Postavite pitanje da započnete razgovor!\n\nnpr. \"Kada je glavno predavanje?\" ili \"Reci mi o predavačima.\"",
+  "aiAssistantThinking": "Razmišljam...",
+  "aiAssistantPlaceholder": "Upišite svoje pitanje ovdje...",
+  "askButtonText": "Pitaj",
+  "aiAssistantFooterText": "AI odgovori su generirani i povremeno mogu biti netočni.",
+  "aiAssistantErrorMessage": "Nažalost, trenutno ne mogu obraditi vaš zahtjev. Molimo pokušajte ponovno kasnije.",
+  "aiAssistantToastTitle": "Greška AI Asistenta",
+  "aiAssistantToastDescription": "Došlo je do problema u komunikaciji s AI. Molimo provjerite vezu ili pokušajte ponovno.",
+  "questionMinLengthError": "Pitanje mora imati najmanje {{min}} znakova.",
+
+  "speakers.mainTitle": "Upoznajte Naše Predavače",
+  "speakers.mainDescription": "Učite od vodećih stručnjaka i akademskih pionira na čelu umjetne inteligencije.",
+  "sponsors.mainTitle": "Naši Cijenjeni Sponzori",
+  "sponsors.mainDescription": "Zahvalni smo na podršci ovih organizacija koje omogućuju CLARC 2025.",
+  "sponsors.platinumTierTitle": "Platinasti Sponzori",
+  "sponsors.goldTierTitle": "Zlatni Sponzori",
+  "sponsors.silverTierTitle": "Srebrni Sponzori",
+  "venue.mainTitle": "Mjesto Održavanja Konferencije",
+  "venue.mainDescription": "Konferencija će se održati u prestižnom Grand Hotelu 4 Opatijska Cvijeta.",
+  "venue.hotelSpecificDescription": "Iskusite eleganciju i udobnost jednog od najboljih opatijskih hotela, koji nudi vrhunske konferencijske sadržaje i prekrasan pogled na more.",
+  "venue.visitHotelButtonText": "Posjetite Web Stranicu Hotela"
 }
