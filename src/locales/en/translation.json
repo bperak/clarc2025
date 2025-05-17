@@ -1,3 +1,4 @@
+
 {
   "title": "Conference Title",
   "accommodationOptionsTitle": "Accommodation Options",
@@ -88,5 +89,29 @@
   "session_s8_title": "Talk: AI in Creative Industries",
   "session_s8_description": "How AI is reshaping art, music, and design.",
   "session_s9_title": "Networking Coffee Break",
-  "session_s9_description": "Connect with peers and speakers."
+  "session_s9_description": "Connect with peers and speakers.",
+
+  "conferenceFullName": "CLARC 2025: Bridging Minds",
+  "nav.home": "Home",
+  "nav.schedule": "Schedule",
+  "nav.speakers": "Speakers",
+  "nav.aiAssistant": "AI Assistant",
+  "nav.register": "Register",
+  "nav.sponsors": "Sponsors",
+  "nav.venue": "Venue",
+  "nav.accommodations": "Accommodations",
+  "nav.aboutOpatija": "About Opatija",
+  "nav.registerNowButton": "Register Now",
+
+  "hero.titleMain": "CLARC 2025:",
+  "hero.titleHighlight": "Bridging Minds",
+  "hero.subtitle": "Join leading researchers, innovators, and thinkers to explore the future of Artificial Intelligence and collaborative discovery.",
+  "hero.viewScheduleButton": "View Schedule",
+
+  "aboutSection.title": "About CLARC 2025",
+  "aboutSection.paragraph": "CLARC 2025 is more than just a conference; it's a confluence of ideas, a platform for groundbreaking discussions, and a catalyst for future collaborations in the realm of Artificial Intelligence. We aim to bridge the gap between theoretical research and practical application, fostering an environment where minds meet and innovation thrives.",
+
+  "footer.inCollaborationWith": "In collaboration with",
+  "footer.immersiveExperience": "Join us for an immersive experience into the future of AI and collaborative research.",
+  "footer.copyright": "© {{year}} CLARC Conference. All rights reserved."
 }

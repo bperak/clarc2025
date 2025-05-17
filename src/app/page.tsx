@@ -1,4 +1,5 @@
 
+"use client"; // Make this a client component to use useTranslation
 
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -14,15 +15,17 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BrainCircuit, CalendarDays, Ticket } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function HomePage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}
         <section id="hero" className="relative text-primary-foreground py-24 md:py-40 overflow-hidden">
-          {/* Enhanced background image layer */}
           <div className="absolute inset-0 z-0">
              <Image 
                 src="https://www.adrionik.com/img/site/accommod_region_photos/icon/4_001.jpg" 
@@ -33,16 +36,15 @@ export default function HomePage() {
                 data-ai-hint="futuristic Opatija"
                 priority
              />
-             {/* Gradient overlay for depth */}
              <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-transparent to-accent/60 opacity-75"></div>
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <BrainCircuit className="mx-auto h-20 w-20 mb-8 text-primary-foreground drop-shadow-lg" />
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-primary-foreground drop-shadow-md">
-              CLARC 2025: <span className="block sm:inline">Bridging Minds</span>
+              {t('hero.titleMain')} <span className="block sm:inline">{t('hero.titleHighlight')}</span>
             </h1>
             <p className="max-w-3xl mx-auto text-xl sm:text-2xl md:text-3xl text-primary-foreground mb-12 drop-shadow-sm">
-              Join leading researchers, innovators, and thinkers to explore the future of Artificial Intelligence and collaborative discovery.
+              {t('hero.subtitle')}
             </p>
             <div className="space-x-0 space-y-4 sm:space-y-0 sm:space-x-6">
               <Button 
@@ -52,7 +54,7 @@ export default function HomePage() {
                 className="border-primary-foreground/80 text-primary-foreground hover:bg-primary-foreground/10 hover:text-background shadow-xl transition-transform hover:scale-105 duration-300 ease-out"
               >
                 <Link href="#registration">
-                  Register Now <Ticket className="ml-2 h-5 w-5" />
+                  {t('nav.registerNowButton')} <Ticket className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button 
@@ -62,7 +64,7 @@ export default function HomePage() {
                 className="border-primary-foreground/80 text-primary-foreground hover:bg-primary-foreground/10 hover:text-background shadow-xl transition-transform hover:scale-105 duration-300 ease-out"
               >
                 <Link href="#schedule">
-                  View Schedule <CalendarDays className="ml-2 h-5 w-5" />
+                  {t('hero.viewScheduleButton')} <CalendarDays className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>
@@ -70,11 +72,11 @@ export default function HomePage() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-16 md:py-24 bg-muted"> {/* Changed background to bg-muted */}
+        <section id="about" className="py-16 md:py-24 bg-muted">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">About CLARC 2025</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">{t('aboutSection.title')}</h2>
             <p className="max-w-3xl mx-auto text-muted-foreground text-lg">
-              CLARC 2025 is more than just a conference; it's a confluence of ideas, a platform for groundbreaking discussions, and a catalyst for future collaborations in the realm of Artificial Intelligence. We aim to bridge the gap between theoretical research and practical application, fostering an environment where minds meet and innovation thrives.
+              {t('aboutSection.paragraph')}
             </p>
           </div>
         </section>
@@ -85,7 +87,7 @@ export default function HomePage() {
         </section>
 
         {/* Speakers Section */}
-        <section id="speakers" className="py-16 md:py-24 bg-muted"> {/* Changed background to bg-muted for distinction */}
+        <section id="speakers" className="py-16 md:py-24 bg-muted">
           <SpeakerShowcase />
         </section>
 
@@ -95,7 +97,7 @@ export default function HomePage() {
         </section>
 
         {/* Registration Section */}
-        <section id="registration" className="py-16 md:py-24 bg-muted"> {/* Changed background to bg-muted */}
+        <section id="registration" className="py-16 md:py-24 bg-muted">
           <StreamlinedRegistration />
         </section>
 
@@ -105,7 +107,7 @@ export default function HomePage() {
         </section>
 
         {/* Venue Section */}
-        <section id="venue" className="py-16 md:py-24 bg-muted"> {/* Changed background to bg-muted for a darker bluish tone */}
+        <section id="venue" className="py-16 md:py-24 bg-muted">
           <VenueSection />
         </section>
 
@@ -115,7 +117,7 @@ export default function HomePage() {
         </section>
 
         {/* About Opatija Section */}
-        <section id="about-opatija" className="bg-background"> {/* No top/bottom padding here, handled by component */}
+        <section id="about-opatija" className="bg-background">
           <AboutOpatijaSection />
         </section>
       </main>
@@ -123,4 +125,3 @@ export default function HomePage() {
     </>
   );
 }
-
