@@ -87,10 +87,8 @@ export default function HomePage() {
           <ClaritySchedule />
         </section>
 
-        {/* Speakers Section */}
-        <section id="speakers" className="py-16 md:py-24 bg-muted">
-          <SpeakerShowcase />
-        </section>
+        {/* Speakers Section - Styling now handled within SpeakerShowcase component */}
+        <SpeakerShowcase />
 
         {/* AI Assistant Section */}
         <section id="ai-assistant" className="py-16 md:py-24 bg-secondary">
@@ -131,3 +129,4 @@ export default function HomePage() {
     </>
   );
 }
+

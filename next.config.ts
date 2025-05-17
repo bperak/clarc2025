@@ -28,6 +28,12 @@ const nextConfig: NextConfig = {
         hostname: 'cji.uniri.hr',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
