@@ -30,7 +30,7 @@ export default function RootLayout({
   const { i18n } = useTranslation(); // Get i18n instance
 
   return (
-    <html lang={i18n.language} className="scroll-smooth h-full dark"> {/* Dynamically set lang */}
+    <html lang={i18n.language} className="scroll-smooth h-full dark">
       <body 
         className={`${openSans.variable} font-sans antialiased flex flex-col min-h-screen h-full`}
       >
