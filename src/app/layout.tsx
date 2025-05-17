@@ -1,9 +1,12 @@
+
+"use client"; // Add "use client" to use hooks
+
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-// Removed: import '@/i18n';
-import I18nAppProvider from '@/app/i18n/I18nProvider'; // Import the new provider
+import I18nAppProvider from '@/app/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const openSans = Open_Sans({
   variable: '--font-open-sans',
@@ -11,22 +14,27 @@ const openSans = Open_Sans({
   weight: ['300', '400', '600', '700']
 });
 
-export const metadata: Metadata = {
-  title: 'CLARC 2025: Bridging Minds',
-  description: 'Conference website for CLARC 2025',
-};
+// Metadata cannot be exported from a Client Component.
+// If you need to set metadata, consider doing it in a Server Component parent
+// or in specific page components if the metadata is page-specific.
+// export const metadata: Metadata = {
+//   title: 'CLARC 2025: Bridging Minds',
+//   description: 'Conference website for CLARC 2025',
+// };
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { i18n } = useTranslation(); // Get i18n instance
+
   return (
-    <html lang="en" className="scroll-smooth h-full dark">
+    <html lang={i18n.language} className="scroll-smooth h-full dark"> {/* Dynamically set lang */}
       <body 
         className={`${openSans.variable} font-sans antialiased flex flex-col min-h-screen h-full`}
       >
-        <I18nAppProvider> {/* Wrap content with the I18n provider */}
+        <I18nAppProvider> {/* I18nProvider should wrap components that use translations */}
           <div className="wave-background-container" aria-hidden="true">
             <div className="wave-element wave-element-1"></div>
             <div className="wave-element wave-element-2"></div>
