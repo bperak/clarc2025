@@ -13,7 +13,7 @@ export function Footer() {
     <footer className="relative text-primary-foreground py-12 md:py-16 mt-auto overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://placehold.co/1920x800.png" 
+          src="https://placehold.co/1920x800.png?text=%20" 
           alt="Abstract futuristic background for footer"
           layout="fill"
           objectFit="cover"
@@ -37,7 +37,7 @@ export function Footer() {
                 alt="CJI Logo" 
                 width={150}
                 height={150}
-                className="h-10 w-auto object-contain" // Removed filter for better visibility
+                className="h-10 w-auto object-contain" 
                 data-ai-hint="CJI logo" 
               />
             </a>

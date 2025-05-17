@@ -31,10 +31,10 @@ const tierStyles = {
   Silver: "border-slate-400 dark:border-slate-500 shadow-slate-400/20 dark:shadow-slate-500/20",
 }
 
-const tierTextStyles = { // These might need adjustment for readability on dark dynamic bg
-  Platinum: "text-primary-foreground drop-shadow-sm", // Adjusted for dark bg
-  Gold: "text-yellow-300 dark:text-yellow-200 drop-shadow-sm", // Adjusted for dark bg
-  Silver: "text-slate-300 dark:text-slate-200 drop-shadow-sm", // Adjusted for dark bg
+const tierTextStyles = { 
+  Platinum: "text-primary-foreground drop-shadow-sm",
+  Gold: "text-yellow-300 dark:text-yellow-200 drop-shadow-sm",
+  Silver: "text-slate-300 dark:text-slate-200 drop-shadow-sm",
 }
 
 export function SponsorHighlights() {
@@ -60,7 +60,7 @@ export function SponsorHighlights() {
     <section id="sponsors" className="relative text-primary-foreground py-16 md:py-24 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://placehold.co/1920x1080.png" 
+          src="https://placehold.co/1920x1080.png?text=%20" 
           alt="Abstract background for sponsors section"
           layout="fill"
           objectFit="cover"
