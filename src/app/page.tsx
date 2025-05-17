@@ -105,10 +105,8 @@ export default function HomePage() {
           <StreamlinedRegistration />
         </section>
 
-        {/* Sponsors Section */}
-        <section id="sponsors" className="py-16 md:py-24 bg-muted">
-          <SponsorHighlights />
-        </section>
+        {/* Sponsors Section - Styling now handled within SponsorHighlights component */}
+        <SponsorHighlights />
 
         {/* Venue Section */}
         <section id="venue" className="py-16 md:py-24 bg-secondary">
