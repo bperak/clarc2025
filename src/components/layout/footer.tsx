@@ -19,12 +19,12 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm text-muted-foreground">{t('footer.inCollaborationWith')}</span>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="CJI - Center for Language Research">
+            <a href="https://cji.uniri.hr/" target="_blank" rel="noopener noreferrer" aria-label="CJI - Center for Language Research">
               <Image 
-                src="/cji-logo.png" 
+                src="https://cji.uniri.hr/wp-content/uploads/cji_logo-removebg-preview-1-e1695380857613-150x150.png" 
                 alt="CJI Logo" 
-                width={100}
-                height={40}
+                width={150}
+                height={150}
                 className="h-10 w-auto object-contain"
                 data-ai-hint="CJI logo" 
               />

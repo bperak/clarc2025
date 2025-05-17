@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.adrionik.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cji.uniri.hr',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
