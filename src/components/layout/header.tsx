@@ -17,6 +17,7 @@ export function Header() {
     { href: '#schedule', labelKey: 'nav.schedule' },
     { href: '#speakers', labelKey: 'nav.speakers' },
     { href: '#ai-assistant', labelKey: 'nav.aiAssistant' },
+    { href: '#call-for-papers', labelKey: 'nav.callForPapers' },
     { href: '#registration', labelKey: 'nav.register' },
     { href: '#sponsors', labelKey: 'nav.sponsors' },
     { href: '#venue', labelKey: 'nav.venue' },

@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/footer';
 import { ClaritySchedule } from '@/components/conference/schedule';
 import { SpeakerShowcase } from '@/components/conference/speakers';
 import { ClarcAiAssistant } from '@/components/conference/ai-assistant';
+import { CallForPapersSection } from '@/components/conference/call-for-papers'; // Import new section
 import { StreamlinedRegistration } from '@/components/conference/registration';
 import { SponsorHighlights } from '@/components/conference/sponsors';
 import { VenueSection } from '@/components/conference/venue';
@@ -95,24 +96,29 @@ export default function HomePage() {
         <section id="ai-assistant" className="py-16 md:py-24 bg-secondary">
           <ClarcAiAssistant />
         </section>
+        
+        {/* Call for Papers Section */}
+        <section id="call-for-papers" className="py-16 md:py-24 bg-muted">
+          <CallForPapersSection />
+        </section>
 
         {/* Registration Section */}
-        <section id="registration" className="py-16 md:py-24 bg-muted">
+        <section id="registration" className="py-16 md:py-24 bg-secondary">
           <StreamlinedRegistration />
         </section>
 
         {/* Sponsors Section */}
-        <section id="sponsors" className="py-16 md:py-24 bg-secondary">
+        <section id="sponsors" className="py-16 md:py-24 bg-muted">
           <SponsorHighlights />
         </section>
 
         {/* Venue Section */}
-        <section id="venue" className="py-16 md:py-24 bg-muted">
+        <section id="venue" className="py-16 md:py-24 bg-secondary">
           <VenueSection />
         </section>
 
         {/* Accommodations Section */}
-        <section id="accommodations" className="py-16 md:py-24 bg-secondary">
+        <section id="accommodations" className="py-16 md:py-24 bg-muted">
           <AccommodationsSection />
         </section>
 
