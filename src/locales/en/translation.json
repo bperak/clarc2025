@@ -136,10 +136,22 @@
   "emailPreview.emailLabel": "Email",
   "emailPreview.organizationLabel": "Organization",
   "emailPreview.ticketTypeLabel": "Ticket Type",
-  "emailPreview.paymentInfoPlaceholder": "You will receive separate instructions regarding payment if applicable. Please check your inbox for a message from payments@clarc2025.org or similar.",
+  "emailPreview.paymentDetailsHeader": "Payment Details (Proforma Invoice)",
+  "emailPreview.payToLabel": "Payable to:",
+  "emailPreview.payToValue": "Filozofski fakultet (Faculty of Humanities and Social Sciences), Sveučilišna avenija 4, HR-51000 Rijeka, Croatia",
+  "emailPreview.ibanLabel": "IBAN:",
+  "emailPreview.ibanValue": "HR9123600001101536455 (Zagrebačka banka d.d.)",
+  "emailPreview.referenceNumberLabel": "Reference Number:",
+  "emailPreview.referenceNumberValue": "OIB | ID number-26",
+  "emailPreview.descriptionLabel": "Payment Description:",
+  "emailPreview.descriptionValue": "CLARC 2025 {{fullName}}",
+  "emailPreview.feeIncludes": "The registration fee includes conference materials for participants and refreshments during breaks.",
+  "emailPreview.noOnSitePayment": "On-site payment is not possible.",
   "emailPreview.closing": "We look forward to welcoming you to Opatija!",
   "emailPreview.signature": "Sincerely,\nThe CLARC 2025 Organizing Team",
   "ticketTypeStudentEmail": "Student Ticket ($99)",
   "ticketTypeProfessionalEmail": "Professional Ticket ($299)",
   "ticketTypeVIPEmail": "VIP Ticket ($499 - includes workshop access)"
 }
+
+    

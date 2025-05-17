@@ -101,7 +101,18 @@ export function StreamlinedRegistration() {
               </div>
             </div>
             
-            <p>{t('emailPreview.paymentInfoPlaceholder')}</p>
+            <div className="my-6 space-y-3">
+              <h4 className="font-semibold text-md">{t('emailPreview.paymentDetailsHeader')}</h4>
+              <div className="space-y-1 text-xs p-3 border rounded-md bg-card dark:bg-muted/40">
+                <p><strong>{t('emailPreview.payToLabel')}</strong> {t('emailPreview.payToValue')}</p>
+                <p><strong>{t('emailPreview.ibanLabel')}</strong> {t('emailPreview.ibanValue')}</p>
+                <p><strong>{t('emailPreview.referenceNumberLabel')}</strong> {t('emailPreview.referenceNumberValue')}</p>
+                <p><strong>{t('emailPreview.descriptionLabel')}</strong> {t('emailPreview.descriptionValue', { fullName: submittedData.fullName })}</p>
+              </div>
+              <p className="text-xs text-muted-foreground">{t('emailPreview.feeIncludes')}</p>
+              <p className="text-xs text-muted-foreground">{t('emailPreview.noOnSitePayment')}</p>
+            </div>
+            
             <p className="mt-4">{t('emailPreview.closing')}</p>
             <p>{t('emailPreview.signature')}</p>
           </CardContent>
@@ -209,3 +220,6 @@ export function StreamlinedRegistration() {
     </div>
   );
 }
+
+
+    

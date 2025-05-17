@@ -138,10 +138,22 @@
   "emailPreview.emailLabel": "E-mail",
   "emailPreview.organizationLabel": "Organizacija",
   "emailPreview.ticketTypeLabel": "Vrsta ulaznice",
-  "emailPreview.paymentInfoPlaceholder": "Uskoro ćete primiti zasebne upute o plaćanju, ako je primjenjivo. Molimo provjerite svoj sandučić za poruku od payments@clarc2025.org ili slično.",
+  "emailPreview.paymentDetailsHeader": "Podaci za uplatu (Predračun)",
+  "emailPreview.payToLabel": "Uplata za:",
+  "emailPreview.payToValue": "Filozofski fakultet, Sveučilišna avenija 4, HR-51000 Rijeka",
+  "emailPreview.ibanLabel": "IBAN:",
+  "emailPreview.ibanValue": "HR9123600001101536455 (Zagrebačka banka d.d.)",
+  "emailPreview.referenceNumberLabel": "POZIV NA BROJ:",
+  "emailPreview.referenceNumberValue": "OIB | ID number-26",
+  "emailPreview.descriptionLabel": "OPIS PLAĆANJA:",
+  "emailPreview.descriptionValue": "CLARC 2025 {{fullName}}",
+  "emailPreview.feeIncludes": "U kotizaciju su uključeni troškovi konferencijskih materijala za sudionike te osvježenja u stankama.",
+  "emailPreview.noOnSitePayment": "Nije moguća uplata kotizacije na licu mjesta.",
   "emailPreview.closing": "Radujemo se Vašem dolasku u Opatiju!",
   "emailPreview.signature": "Srdačan pozdrav,\nOrganizacijski tim CLARC 2025",
   "ticketTypeStudentEmail": "Studentska ulaznica (99 USD)",
   "ticketTypeProfessionalEmail": "Profesionalna ulaznica (299 USD)",
   "ticketTypeVIPEmail": "VIP ulaznica (499 USD - uključuje pristup radionicama)"
 }
+
+    
