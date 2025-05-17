@@ -67,7 +67,8 @@ export function SponsorHighlights() {
           className="opacity-20"
           data-ai-hint="corporate abstract"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-primary/30 to-accent/30 opacity-75"></div>
+        {/* Simplified gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/40 opacity-70"></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -96,7 +97,7 @@ export function SponsorHighlights() {
                           alt={`${sponsor.name} logo`} 
                           width={tier === 'Platinum' ? 200 : 180} 
                           height={tier === 'Platinum' ? 100 : 90}
-                          className="object-contain rounded-md" // Removed filter for better logo visibility
+                          className="object-contain rounded-md"
                           data-ai-hint={sponsor.dataAiHint}
                         />
                       </a>
