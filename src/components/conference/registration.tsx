@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Ticket, Banknote, CheckCircle, Mail } from 'lucide-react'; // Added Mail icon
+import { Ticket, Banknote, CheckCircle, Mail, Loader2 } from 'lucide-react'; // Added Mail, Loader2 icons
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +27,8 @@ export function StreamlinedRegistration() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedData, setSubmittedData] = useState<RegistrationFormValues | null>(null);
-  const { t } = useTranslation();
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const form = useForm<RegistrationFormValues>({
     resolver: zodResolver(registrationFormSchema),
@@ -38,23 +39,67 @@ export function StreamlinedRegistration() {
     },
   });
 
-  const onSubmit: SubmitHandler<RegistrationFormValues> = (data) => {
+  const sendRegistrationEmail = async (data: RegistrationFormValues) => {
+    setIsSendingEmail(true);
+    try {
+      const response = await fetch('/api/send-registration-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({...data, language: i18n.language }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send email');
+      }
+      
+      // Check if email was skipped due to configuration
+      const responseData = await response.json();
+      if (responseData.message && responseData.message.includes("skipped")) {
+        toast({
+          title: t('emailSendSkippedToastTitle'),
+          description: t('emailSendSkippedToastDescription'),
+          variant: "default", // Or "warning" if you have such a variant
+        });
+      } else {
+        toast({
+          title: t('emailSentSuccessToastTitle'),
+          description: t('emailSentSuccessToastDescription'),
+        });
+      }
+
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: t('emailSentErrorToastTitle'),
+        description: t('emailSentErrorToastDescription') + (error instanceof Error ? `: ${error.message}` : ''),
+        variant: "destructive",
+      });
+    } finally {
+      setIsSendingEmail(false);
+    }
+  };
+
+  const onSubmit: SubmitHandler<RegistrationFormValues> = async (data) => {
     console.log("Registration Data:", data);
-    setSubmittedData(data); // Store submitted data for preview
+    setSubmittedData(data); 
+    setIsSubmitted(true);
+    // We show the success message immediately, email sending happens in background
     toast({
       title: t('registrationSubmittedToastTitle'),
       description: t('registrationSubmittedToastDescription'),
     });
-    setIsSubmitted(true);
-    form.reset(); // Reset form after storing data
+    await sendRegistrationEmail(data); // Send email after setting state
+    form.reset(); 
   };
   
-  // Helper function to get translated ticket string for email preview
   const getTicketTypeEmailString = (ticketType: string) => {
     if (ticketType === 'student') return t('ticketTypeStudentEmail');
     if (ticketType === 'professional') return t('ticketTypeProfessionalEmail');
     if (ticketType === 'vip') return t('ticketTypeVIPEmail');
-    return ticketType; // Fallback
+    return ticketType; 
   };
 
   if (isSubmitted && submittedData) {
@@ -71,6 +116,12 @@ export function StreamlinedRegistration() {
             <p className="text-muted-foreground mb-4">
               {t('registrationSuccessMessage1')}
             </p>
+            {isSendingEmail && (
+              <div className="flex items-center justify-center text-sm text-muted-foreground my-2">
+                <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                {t('emailSendingInProgressToastDescription')}
+              </div>
+            )}
             <p className="text-sm text-muted-foreground">
               {t('registrationSuccessMessage2')}
             </p>
@@ -202,8 +253,13 @@ export function StreamlinedRegistration() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                {form.formState.isSubmitting ? t('registerButtonProcessing') : t('registerButtonDefault')}
+              <Button type="submit" className="w-full" disabled={form.formState.isSubmitting || isSendingEmail}>
+                {(form.formState.isSubmitting || isSendingEmail) ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {t('registerButtonProcessing')}
+                  </>
+                ) : t('registerButtonDefault')}
               </Button>
             </form>
           </Form>
@@ -220,6 +276,3 @@ export function StreamlinedRegistration() {
     </div>
   );
 }
-
-
-    

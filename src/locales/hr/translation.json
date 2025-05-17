@@ -153,7 +153,13 @@
   "emailPreview.signature": "Srdačan pozdrav,\nOrganizacijski tim CLARC 2025",
   "ticketTypeStudentEmail": "Studentska ulaznica (99 USD)",
   "ticketTypeProfessionalEmail": "Profesionalna ulaznica (299 USD)",
-  "ticketTypeVIPEmail": "VIP ulaznica (499 USD - uključuje pristup radionicama)"
+  "ticketTypeVIPEmail": "VIP ulaznica (499 USD - uključuje pristup radionicama)",
+  
+  "emailSentSuccessToastTitle": "E-mail potvrde poslan",
+  "emailSentSuccessToastDescription": "Potvrda vaše registracije poslana je na vašu e-poštu.",
+  "emailSentErrorToastTitle": "Slanje e-maila nije uspjelo",
+  "emailSentErrorToastDescription": "Nije moguće poslati e-mail potvrde. Molimo provjerite svoje podatke ili kontaktirajte podršku.",
+  "emailSendingInProgressToastDescription": "Slanje e-maila potvrde...",
+  "emailSendSkippedToastTitle": "Slanje E-maila Preskočeno",
+  "emailSendSkippedToastDescription": "Slanje e-maila nije u potpunosti konfigurirano na poslužitelju. Vaša registracija je spremljena."
 }
-
-    

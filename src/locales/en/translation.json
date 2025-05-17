@@ -151,7 +151,13 @@
   "emailPreview.signature": "Sincerely,\nThe CLARC 2025 Organizing Team",
   "ticketTypeStudentEmail": "Student Ticket ($99)",
   "ticketTypeProfessionalEmail": "Professional Ticket ($299)",
-  "ticketTypeVIPEmail": "VIP Ticket ($499 - includes workshop access)"
-}
+  "ticketTypeVIPEmail": "VIP Ticket ($499 - includes workshop access)",
 
-    
+  "emailSentSuccessToastTitle": "Confirmation Email Sent",
+  "emailSentSuccessToastDescription": "Your registration confirmation has been sent to your email.",
+  "emailSentErrorToastTitle": "Email Sending Failed",
+  "emailSentErrorToastDescription": "Could not send the confirmation email. Please check your details or contact support.",
+  "emailSendingInProgressToastDescription": "Sending confirmation email...",
+  "emailSendSkippedToastTitle": "Email Sending Skipped",
+  "emailSendSkippedToastDescription": "Email sending is not fully configured on the server. Your registration is saved."
+}
