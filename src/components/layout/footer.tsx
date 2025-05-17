@@ -11,15 +11,8 @@ export function Footer() {
 
   return (
     <footer className="relative text-primary-foreground py-12 md:py-16 mt-auto overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://placehold.co/1920x800.png" 
-          alt="Abstract futuristic background for footer"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-15" 
-          data-ai-hint="dark abstract"
-        />
+      <div className="absolute inset-0 z-0 bg-primary/10"> {/* Solid light blue themed base */}
+        {/* Removed Image component that was here */}
         <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-background/40 to-accent/50 opacity-75"></div>
       </div>
 

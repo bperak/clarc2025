@@ -58,15 +58,8 @@ export function SponsorHighlights() {
 
   return (
     <section id="sponsors" className="relative text-primary-foreground py-16 md:py-24 overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://placehold.co/1920x1080.png" 
-          alt="Abstract background for sponsors section"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-20"
-          data-ai-hint="corporate abstract"
-        />
+      <div className="absolute inset-0 z-0 bg-primary/10"> {/* Solid light blue themed base */}
+        {/* Removed Image component that was here */}
         {/* Simplified gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/40 opacity-70"></div>
       </div>
