@@ -5,6 +5,37 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { MapPin, Hotel } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from '@/components/ui/carousel';
+
+// Hotel images - Grand Hotel 4 Opatijska Cvijeta
+const hotelImages = [
+  {
+    src: "https://cdn.webhotelier.net/photos/w=1920/grand4/L563110.jpg",
+    alt: "Grand Hotel 4 Opatijska Cvijeta - Exterior"
+  },
+  {
+    src: "https://www.liburnia.hr/datastore/imagestore/original/1581344849Grand-Hotel-4-Opatijska-Cvijeta-Lobby.jpg",
+    alt: "Grand Hotel 4 Opatijska Cvijeta - Lobby"
+  },
+  {
+    src: "https://www.liburnia.hr/datastore/imagestore/original/1590758025Grand-Hotel-4-Opatijska-Cvijeta-Conference.jpg",
+    alt: "Grand Hotel 4 Opatijska Cvijeta - Conference Room"
+  },
+  {
+    src: "https://www.liburnia.hr/datastore/imagestore/original/1581344922Grand-Hotel-4-Opatijska-Cvijeta-Room.jpg",
+    alt: "Grand Hotel 4 Opatijska Cvijeta - Room"
+  },
+  {
+    src: "https://www.liburnia.hr/datastore/imagestore/original/1581345013Grand-Hotel-4-Opatijska-Cvijeta-Restaurant.jpg",
+    alt: "Grand Hotel 4 Opatijska Cvijeta - Restaurant"
+  }
+];
 
 export function VenueSection() {
   const { t } = useTranslation();
@@ -18,19 +49,31 @@ export function VenueSection() {
           {t('venue.mainDescription')}
         </p>
       </div>
-      <Card className="max-w-3xl mx-auto shadow-xl overflow-hidden rounded-lg">
-        <div className="md:flex">
-          <div className="md:shrink-0 md:w-1/2 relative h-64 md:h-auto">
-            <Image
-              src="https://picsum.photos/seed/grandhotel/600/400"
-              alt="Grand Hotel 4 Opatijska Cvijeta exterior"
-              layout="fill"
-              objectFit="cover"
-              className="md:rounded-l-lg md:rounded-tr-none rounded-t-lg"
-              data-ai-hint="luxury hotel exterior"
-            />
+      <Card className="max-w-4xl mx-auto shadow-xl overflow-hidden rounded-lg">
+        <div className="flex flex-col">
+          <div className="w-full h-[400px] relative overflow-hidden">
+            <Carousel className="w-full h-full">
+              <CarouselContent>
+                {hotelImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="w-full h-[400px] relative">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"
+                        priority={index === 0}
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4" />
+              <CarouselNext className="right-4" />
+            </Carousel>
           </div>
-          <div className="p-8 md:w-1/2 flex flex-col justify-center">
+          
+          <div className="p-8 flex flex-col justify-center">
             <CardHeader className="p-0 mb-4">
               <CardTitle className="text-2xl">Grand Hotel 4 Opatijska Cvijeta</CardTitle>
               <CardDescription className="flex items-center text-sm mt-1">
@@ -39,10 +82,10 @@ export function VenueSection() {
             </CardHeader>
             <CardContent className="p-0">
               <p className="text-muted-foreground mb-6">
-                {t('venue.hotelSpecificDescription')}
+                Located in the heart of Opatija, Grand Hotel 4 Opatijska Cvijeta offers elegant accommodation with stunning views of the Adriatic Sea. The hotel features spacious conference facilities, luxurious rooms, and excellent dining options, making it the perfect venue for CLARC2025.
               </p>
               <Button asChild>
-                <a href="https://www.liburnia.hr/en/hotel-grand-4-opatijska-cvijeta" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.amadriapark.com/hr/hotel/amadria-park-grand-hotel-4-opatijska-cvijeta-opatija-beach-family-hotel" target="_blank" rel="noopener noreferrer">
                   {t('venue.visitHotelButtonText')}
                 </a>
               </Button>

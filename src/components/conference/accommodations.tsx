@@ -10,16 +10,16 @@ const accommodationOptions = [
   {
     name: "Hotel Royal",
     description: "Luxurious accommodation with stunning sea views, offering a premium experience in Opatija.",
-    imageUrl: "https://picsum.photos/seed/hotelroyal/400/300",
+    imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/13/b9/20/0d/hotel-royal-royal-beach.jpg",
     dataAiHint: "luxury hotel room",
-    websiteUrl: "#" // Replace with actual link
+    websiteUrl: "https://www.amadriapark.com/hotel/amadria-park-hotel-royal" // Replace with actual link
   },
   {
     name: "Hotel Continental",
     description: "A charming hotel known for its historic architecture and central location, perfect for exploring Opatija.",
-    imageUrl: "https://picsum.photos/seed/hotelcontinental/400/300",
+    imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/d6/3a/36/hotel-continental.jpg?w=900&h=500&s=1",
     dataAiHint: "historic hotel facade",
-    websiteUrl: "#" // Replace with actual link
+    websiteUrl: "https://www.amadriapark.com/hotel/amadria-park-hotel-continental" // Replace with actual link
   }
 ];
 

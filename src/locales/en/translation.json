@@ -1,4 +1,3 @@
-
 {
   "title": "Conference Title",
   "accommodationOptionsTitle": "Accommodation Options",
@@ -66,6 +65,7 @@
   "sessionTypeTalk": "Talk",
   "sessionTypePanel": "Panel",
   "sessionTypeBreak": "Break",
+  "sessionTypeSocial": "Social Event",
   "addToCalendarButtonText": "Add to Calendar",
   "noSessionsScheduled": "No sessions scheduled for this day yet. Please check back later.",
   "session_s2_title": "Workshop 1: Advanced Next.js for AI Applications",
@@ -90,17 +90,25 @@
   "session_s8_description": "How AI is reshaping art, music, and design.",
   "session_s9_title": "Networking Coffee Break",
   "session_s9_description": "Connect with peers and speakers.",
+  "session_classla_title": "CLASSLA-express Workshop",
+  "session_classla_description": "A practical workshop on language processing tools for South Slavic languages, led by Ivana Filipović Petrović and Nikola Ljubešić.",
+  "session_lunch_break_title": "Lunch Break",
+  "session_lunch_break_description": "Network with fellow attendees and workshop participants.",
+  "session_tbd_workshop_title": "Additional Workshop (TBD)",
+  "session_tbd_workshop_description": "More information about this workshop will be announced soon.",
+  "session_integrated_study_title": "Integrated Study Presentation: FER and FFZG",
+  "session_integrated_study_description": "Presentation of the integrated study program between Faculty of Electrical Engineering and Computing (FER) and Faculty of Humanities and Social Sciences (FFZG) focusing on Applied Cognitive Science.",
   "conferenceFullName": "CLARC 2025: Bridging Minds",
   "nav.home": "Home",
   "nav.schedule": "Schedule",
   "nav.speakers": "Speakers",
-  "nav.aiAssistant": "AI Assistant",
-  "nav.callForPapers": "Call for Papers",
+  "nav.aiAssistant": "A(i)ssistant",
+  "nav.callForPapers": "CFP",
   "nav.register": "Register",
   "nav.sponsors": "Sponsors",
   "nav.venue": "Venue",
   "nav.accommodations": "Accommodations",
-  "nav.aboutOpatija": "About Opatija",
+  "nav.aboutOpatija": "Opatija",
   "nav.registerNowButton": "Register Now",
   "nav.toggleMenu": "Toggle Menu",
   "hero.titleMain": "CLARC 2025:",
@@ -108,7 +116,7 @@
   "hero.subtitle": "Join leading researchers, innovators, and thinkers to explore the future of Artificial Intelligence and collaborative discovery.",
   "hero.viewScheduleButton": "View Schedule",
   "aboutSection.title": "About CLARC 2025",
-  "aboutSection.paragraph": "CLARC 2025 is more than just a conference; it's a confluence of ideas, a platform for groundbreaking discussions, and a catalyst for future collaborations in the realm of Artificial Intelligence. We aim to bridge the gap between theoretical research and practical application, fostering an environment where minds meet and innovation thrives.",
+  "aboutSection.paragraph": "The Center for Language Research at the University of Rijeka proudly presents CLARC2025, where language—the foundation of human communication, culture, and identity—is explored at the intersection with artificial intelligence. In this era of technological transformation, language research has evolved into a field of intensive collaboration with information technologies. Artificial intelligence, machine learning, big data analysis, and natural language processing (NLP) have become essential tools in language study, offering new possibilities for analyzing, processing, and preserving linguistic data. From speech recognition and machine translation to social media analysis and digital language preservation—linguistic and information sciences are becoming allies in creating smarter, more accessible technologies. Join us in creating the future of digital linguistics!",
   "footer.inCollaborationWith": "In collaboration with",
   "footer.immersiveExperience": "Join us for an immersive experience into the future of AI and collaborative research.",
   "footer.copyright": "© {{year}} CLARC Conference. All rights reserved.",
@@ -214,5 +222,19 @@
   "Password is too weak. It should be at least 6 characters.": "Password is too weak. It should be at least 6 characters.",
   "This operation is sensitive and requires recent authentication. Please log in again.": "This operation is sensitive and requires recent authentication. Please log in again.",
   "Too many unsuccessful login attempts. Please try again later or reset your password.": "Too many unsuccessful login attempts. Please try again later or reset your password.",
-  "An unexpected error occurred. Please try again.": "An unexpected error occurred. Please try again."
+  "An unexpected error occurred. Please try again.": "An unexpected error occurred. Please try again.",
+  "session_keynote_day1_title": "Opening Keynote: The Future of Language Research in the Age of AI",
+  "session_keynote_day1_description": "An inspiring talk exploring the evolving landscape of language research and how artificial intelligence is transforming linguistic studies.",
+  
+  "session_roundtable_day1_title": "Round Table: The Future of Language in the Age of AI",
+  "session_roundtable_day1_description": "Expert discussion on how AI will transform language research, usage, and preservation in the coming decades, featuring leading academics and industry representatives.",
+  
+  "session_conference_dinner_title": "Conference Dinner",
+  "session_conference_dinner_description": "Formal dinner and networking event for all conference participants with Croatian cuisine and cultural program.",
+  
+  "session_keynote_day2_title": "Day 2 Keynote: Computational Creativity in Language",
+  "session_keynote_day2_description": "Exploring how AI systems exhibit creative behaviors in language generation and processing.",
+  
+  "session_awards_closing_title": "Awards Ceremony and Closing Remarks",
+  "session_awards_closing_description": "Presentation of awards for outstanding papers and research, followed by closing statements and future conference announcements."
 }

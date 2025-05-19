@@ -1,4 +1,3 @@
-
 {
   "conferenceTitle": "CLARC 2025: Premošćivanje Umova",
   "welcomeMessage": "Pridružite se vodećim istraživačima, inovatorima i misliocima kako biste istražili budućnost umjetne inteligencije i zajedničkog otkrića.",
@@ -56,6 +55,7 @@
   "sessionTypeTalk": "Predavanje",
   "sessionTypePanel": "Panel",
   "sessionTypeBreak": "Pauza",
+  "sessionTypeSocial": "Društveni događaj",
   "addToCalendarButtonText": "Dodaj u kalendar",
   "noSessionsScheduled": "Još nema zakazanih predavanja za ovaj dan. Molimo provjerite kasnije.",
   "session_s2_title": "Radionica 1: Napredni Next.js za AI Aplikacije",
@@ -80,17 +80,25 @@
   "session_s8_description": "Kako AI preoblikuje umjetnost, glazbu i dizajn.",
   "session_s9_title": "Mrežna pauza za kavu",
   "session_s9_description": "Povežite se s kolegama i predavačima.",
+  "session_classla_title": "CLASSLA-express radionica",
+  "session_classla_description": "Praktična radionica o alatima za obradu jezika za južnoslavenske jezike, koju vode Ivana Filipović Petrović i Nikola Ljubešić.",
+  "session_lunch_break_title": "Pauza za ručak",
+  "session_lunch_break_description": "Umrežite se s ostalim sudionicima i sudionicima radionice.",
+  "session_tbd_workshop_title": "Dodatna radionica (TBD)",
+  "session_tbd_workshop_description": "Više informacija o ovoj radionici bit će objavljeno uskoro.",
+  "session_integrated_study_title": "Prezentacija integriranog studija: FER i FFZG",
+  "session_integrated_study_description": "Prezentacija integriranog studijskog programa između Fakulteta elektrotehnike i računarstva (FER) i Filozofskog fakulteta (FFZG) s fokusom na primijenjenu kognitivnu znanost.",
   "conferenceFullName": "CLARC 2025: Premošćivanje Umova",
   "nav.home": "Početna",
   "nav.schedule": "Raspored",
   "nav.speakers": "Predavači",
-  "nav.aiAssistant": "AI Asistent",
-  "nav.callForPapers": "Poziv na radove",
+  "nav.aiAssistant": "A(I)sistant",
+  "nav.callForPapers": "Poziv",
   "nav.register": "Registracija",
   "nav.sponsors": "Sponzori",
   "nav.venue": "Mjesto održavanja",
   "nav.accommodations": "Smještaj",
-  "nav.aboutOpatija": "O Opatiji",
+  "nav.aboutOpatija": "Opatija",
   "nav.registerNowButton": "Registriraj se",
   "nav.toggleMenu": "Otvori Izbornik",
   "hero.titleMain": "CLARC 2025:",
@@ -98,7 +106,7 @@
   "hero.subtitle": "Pridružite se vodećim istraživačima, inovatorima i misliocima u istraživanju budućnosti umjetne inteligencije i kolaborativnih otkrića.",
   "hero.viewScheduleButton": "Vidi Raspored",
   "aboutSection.title": "O CLARC 2025",
-  "aboutSection.paragraph": "CLARC 2025 je više od konferencije; to je stjecište ideja, platforma za revolucionarne rasprave i katalizator budućih suradnji u području umjetne inteligencije. Cilj nam je premostiti jaz između teorijskog istraživanja i praktične primjene, potičući okruženje gdje se umovi susreću i inovacije cvjetaju.",
+  "aboutSection.paragraph": "Centar za jezična istraživanja Filozofskoga fakulteta Sveučilišta u Rijeci s ponosom predstavlja CLARC2025, gdje se jezik—temelj ljudske komunikacije, kulture i identiteta—istražuje na sjecištu s umjetnom inteligencijom. U ovoj eri tehnološke transformacije, jezična istraživanja evoluirala su u polje intenzivne suradnje s informacijskim tehnologijama. Umjetna inteligencija, strojno učenje, analiza velikih podataka i obrada prirodnog jezika (NLP) postali su ključni alati u proučavanju jezika, nudeći nove mogućnosti za analizu, obradu i očuvanje jezičnih podataka. Od prepoznavanja govora i strojnog prevođenja do analize društvenih mreža i digitalnog očuvanja jezika—jezične i informacijske znanosti postaju saveznici u stvaranju pametnijih i pristupačnijih tehnologija. Pridružite nam se u stvaranju budućnosti digitalne lingvistike!",
   "footer.inCollaborationWith": "U suradnji s",
   "footer.immersiveExperience": "Pridružite nam se za uranjajuće iskustvo u budućnost AI i kolaborativnog istraživanja.",
   "footer.copyright": "© {{year}} CLARC Konferencija. Sva prava pridržana.",
@@ -215,5 +223,19 @@
   "Password is too weak. It should be at least 6 characters.": "Lozinka je preslaba. Trebala bi imati najmanje 6 znakova.",
   "This operation is sensitive and requires recent authentication. Please log in again.": "Ova operacija je osjetljiva i zahtijeva nedavnu autentifikaciju. Molimo prijavite se ponovno.",
   "Too many unsuccessful login attempts. Please try again later or reset your password.": "Previše neuspješnih pokušaja prijave. Molimo pokušajte ponovno kasnije ili poništite lozinku.",
-  "An unexpected error occurred. Please try again.": "Došlo je do neočekivane pogreške. Molimo pokušajte ponovno."
+  "An unexpected error occurred. Please try again.": "Došlo je do neočekivane pogreške. Molimo pokušajte ponovno.",
+  "session_keynote_day1_title": "Uvodno predavanje: Budućnost jezičnih istraživanja u doba umjetne inteligencije",
+  "session_keynote_day1_description": "Inspirativno predavanje koje istražuje promjenjivu prirodu jezičnih istraživanja i kako umjetna inteligencija transformira lingvističke studije.",
+  
+  "session_roundtable_day1_title": "Okrugli stol: Budućnost jezika u doba umjetne inteligencije",
+  "session_roundtable_day1_description": "Stručna rasprava o tome kako će umjetna inteligencija transformirati jezična istraživanja, upotrebu i očuvanje jezika u nadolazećim desetljećima, s vodećim akademicima i predstavnicima industrije.",
+  
+  "session_conference_dinner_title": "Konferencijska večera",
+  "session_conference_dinner_description": "Formalna večera i društveni događaj za sve sudionike konferencije s hrvatskom kuhinjom i kulturnim programom.",
+  
+  "session_keynote_day2_title": "Predavanje drugog dana: Računalna kreativnost u jeziku",
+  "session_keynote_day2_description": "Istraživanje kako sustavi umjetne inteligencije pokazuju kreativno ponašanje u generiranju i obradi jezika.",
+  
+  "session_awards_closing_title": "Dodjela nagrada i završne riječi",
+  "session_awards_closing_description": "Dodjela nagrada za izvanredne radove i istraživanja, nakon čega slijede završne izjave i najave budućih konferencija."
 }

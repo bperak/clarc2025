@@ -1,0 +1,169 @@
+# CLARC2025
+## International Scientific Conference
+# "Perspectives of Language Research in the Age of Artificial Intelligence"
+
+**November 6-7, 2025**  
+Faculty of Philosophy  
+University of Rijeka, Croatia
+
+---
+
+## About CLARC2025
+
+The Center for Language Research at the University of Rijeka proudly presents CLARC2025, a groundbreaking international conference at the intersection of linguistics and artificial intelligence.
+
+In an era where technological achievements are reshaping reality, language—the foundation of human communication, culture, and identity—is no longer solely the domain of philological research. It has evolved into a field of intensive collaboration with information technologies. 
+
+Artificial intelligence, machine learning, big data analysis, and natural language processing (NLP) have become essential tools in language study, offering new possibilities for analyzing, processing, and preserving linguistic data. From automatic speech recognition and machine translation to social media analysis, semantic search, and digital language preservation—linguistic and information sciences are becoming allies in creating smarter, more accessible technologies.
+
+**CLARC2025** invites you to join us in creating the future of digital linguistics!
+
+---
+
+## Conference Themes
+
+Our interdisciplinary approach welcomes contributions addressing empirical, theoretical, and methodological questions in the following areas:
+
+### 🔹 NLP and Artificial Intelligence
+- Novel models for language understanding, including large language models and data mining techniques
+- Semantic analysis, entity recognition, and text categorization
+- Adaptation of NLP models for less-represented languages, including Croatian
+- Enhancement of automated language processing systems for sentiment, dialogue, context understanding, and inference
+- Real-world NLP applications in chatbots, automatic translators, social media opinion analysis, and information systems
+
+### 🔹 Digital Language Reality and Data in Global Society
+- Digital literacy and the impact of new media on language structures and norms
+- Collection, structuring, and utilization of language data in digital environments
+- Differences between digital and traditional spoken language
+- Language rights and policy in the context of digitalization
+- AI's influence on language communities, including preservation and revitalization through digital technologies
+
+### 🔹 Machine Translation and Language Analysis Algorithms
+- New approaches to machine translation, including neural networks and transformers
+- Algorithm adaptation for specific language pairs or specialized contexts
+- Techniques for improving accuracy and speed of machine translation
+- Integration of machine translation with NLP methods
+- Automation of proofreading processes in machine translations and industry applications
+
+### 🔹 Ethics and Social Impact of Language Technologies
+- Privacy and data protection in NLP and language processing
+- Biases in language models and algorithms: manifestation and mitigation
+- Impact of language technologies on employment, especially in translation and journalism
+- Ethical approaches to developing language models for smaller languages
+- Application of language technologies in social contexts and implications for social inclusion
+
+---
+
+## Participation Options
+
+CLARC2025 welcomes submissions in any language, based on any relevant theoretical framework. Interdisciplinary papers and panels are especially encouraged. All submissions undergo double-blind review by two reviewers, evaluating topic relevance, scientific contribution, and research methodology.
+
+You can participate by:
+- Presenting a scientific paper
+- Organizing a panel on a relevant topic
+
+**Working languages**: Croatian and English
+
+---
+
+## Important Dates
+
+- **June 15, 2025**: Extended abstract submission deadline
+- **Notification of acceptance**: To be determined
+- **First Call**: July 15, 2025
+- **Second Call**: September 15, 2025
+- **Program Announcement**: October 1, 2025
+
+---
+
+## Submission Guidelines
+
+To participate, please submit an extended abstract in Croatian or English. Your abstract should be 1-3 pages formatted according to the template available at: [link to be added]
+
+All accepted abstracts will be published in the Book of Abstracts.
+
+---
+
+## Featured Events
+
+### Plenary Speakers
+- Benedikt Perak
+- Renata Geld
+- Tony Veale (TBC)
+
+### Roundtable Discussion
+Featuring experts from academia and industry, including representatives from Tadić, Krek, Ranka Stankovic, head of CARNET, BRAIN CARNET, Algebra, and more.
+
+### CLASSLA-express Workshop
+**Pre-conference event**: November 5, 2025  
+**Location**: Faculty of Philosophy, University of Rijeka  
+**Workshop leaders**: Ivana Filipović Petrović and Nikola Ljubešić
+
+### Additional Preconference Ideas
+- **Integrated Study Presentation**: Potential presentation of the integrated study program between FER and FFZG (Applied Cognitive Science)
+- **Student Showcase**: Opportunity for students to present their work at a dedicated stand in the hotel
+
+---
+
+## Industry Partnerships
+
+CLARC2025 bridges the gap between academic research and industrial applications. Throughout the conference, participants can visit company booths, ask questions, and attend short demonstrations from leading organizations in AI and language technology:
+
+### Potential Sponsors and Partners
+- OpenAI
+- Microsoft
+- Klett-Profil
+- Institute for Croatian Language (IHJ)
+- Google
+- InfoBip
+- Formals
+- Demokracija i um
+- BRAIN CARNET (https://www.carnet.hr/projekt/brain/)
+- CroAI (https://www.croai.org/)
+- EDIH ADRIA
+- Kružić
+- Porin - Antolović
+- Velebit AI
+- Automatika
+- Rimac (potential)
+- Ericsson Nikola Tesla d.d.
+- Riječka razvojna agencija Porin d.o.o.
+
+**Awards for Outstanding Research**: To encourage innovation, sponsors will present awards for exceptional papers in NLP, language technologies, and AI applications.
+
+---
+
+## Registration
+
+**Registration fees**:
+- Early registration: [amount to be determined]
+- Late registration: [amount to be determined]
+
+**Payment details**:  
+Recipient: Filozofski fakultet, Sveučilišna avenija 4, HR-51000 Rijeka  
+IBAN: HR9123600001101536455 (Zagrebačka banka d.d.) 
+Reference number: OIB | ID number-26  
+Description: CLARC2025 [your name and surname]
+
+The registration fee includes conference materials and refreshments during breaks. On-site registration will not be available.
+
+---
+
+## Conference Planning Notes
+
+### Room Reservations
+- Need to reserve classrooms at the Faculty of Philosophy for the CLASSLA-express workshop
+
+### Registration Details
+- Registration fee amounts to be determined for early and late registration
+- Consider special rates for students and early career researchers
+
+### Conference Materials
+- Conference materials will be provided to all participants
+- Refreshments will be available during breaks
+
+---
+
+**Join us at CLARC2025 to explore the fascinating convergence of language research and artificial intelligence!**
+
+**#CLARC2025 #AILinguistics #NLP #LanguageTech**

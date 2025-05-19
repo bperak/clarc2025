@@ -13,7 +13,7 @@ export function AboutOpatijaSection() {
       {/* Background Image with Animation */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://picsum.photos/seed/opatija/1920/1080"
+          src="https://www.mycroatiacruise.com/storage/destinations/opatija.jpg"
           alt="Scenic view of Opatija, Croatia with its coastline and historic buildings"
           layout="fill"
           objectFit="cover"

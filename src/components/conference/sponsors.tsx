@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -13,26 +12,102 @@ type Sponsor = {
   description: string;
   websiteUrl: string;
   dataAiHint: string;
-  tier: 'Platinum' | 'Gold' | 'Silver';
+  tier: 'Gold' | 'Silver';
 };
 
 const sponsorsData: Sponsor[] = [
-  { id: 'sponsor1', name: 'Innovatech Solutions', logoUrl: 'https://picsum.photos/seed/innovatech/200/100', description: 'Leading the charge in AI-driven technological innovation and enterprise solutions.', websiteUrl: '#', dataAiHint: 'tech logo', tier: 'Platinum' },
-  { id: 'sponsor2', name: 'FutureAI Corp', logoUrl: 'https://picsum.photos/seed/futureai/200/100', description: 'Building tomorrow\'s intelligent systems, today. Specializing in machine learning and robotics.', websiteUrl: '#', dataAiHint: 'modern logo', tier: 'Platinum' },
-  { id: 'sponsor3', name: 'QuantumData Analytics', logoUrl: 'https://picsum.photos/seed/quantumdata/200/100', description: 'Unlocking insights from complex data using cutting-edge quantum computing and AI.', websiteUrl: '#', dataAiHint: 'data logo', tier: 'Gold' },
-  { id: 'sponsor4', name: 'ConnectSphere Networks', logoUrl: 'https://picsum.photos/seed/connectsphere/200/100', description: 'Providing robust and secure infrastructure for AI and big data applications.', websiteUrl: '#', dataAiHint: 'network logo', tier: 'Gold' },
-  { id: 'sponsor5', name: 'EcoSpark Ventures', logoUrl: 'https://picsum.photos/seed/ecospark/200/100', description: 'Investing in sustainable AI technologies for a greener future.', websiteUrl: '#', dataAiHint: 'green logo', tier: 'Silver' },
-  { id: 'sponsor6', name: 'LearnAI Academy', logoUrl: 'https://picsum.photos/seed/learnai/200/100', description: 'Empowering the next generation of AI professionals through comprehensive education programs.', websiteUrl: '#', dataAiHint: 'education logo', tier: 'Silver' },
+  // Gold sponsors
+  { 
+    id: 'infobip', 
+    name: 'InfoBip', 
+    logoUrl: 'https://www.infobip.com/assets/svg/logo.svg', 
+    description: 'Global cloud communications platform that enables businesses to build connected experiences.', 
+    websiteUrl: 'https://www.infobip.com', 
+    dataAiHint: 'communications logo', 
+    tier: 'Gold' 
+  },
+  { 
+    id: 'ericsson', 
+    name: 'Ericsson Nikola Tesla', 
+    logoUrl: 'https://www.ericsson.hr/documents/20123/0/header_logo.png/33b58a1c-da42-9a11-a59f-cd87e44f01b6?t=1555404379359', 
+    description: 'Leading provider of information and communication technology solutions.', 
+    websiteUrl: 'https://www.ericsson.hr', 
+    dataAiHint: 'telecom logo', 
+    tier: 'Gold' 
+  },
+  { 
+    id: 'google', 
+    name: 'Google', 
+    logoUrl: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', 
+    description: 'Technology company specializing in internet-related services and AI innovation.', 
+    websiteUrl: 'https://www.google.com', 
+    dataAiHint: 'tech logo', 
+    tier: 'Gold' 
+  },
+  
+  // Silver sponsors
+  { 
+    id: 'klett', 
+    name: 'Klett-Profil', 
+    logoUrl: 'https://www.profil-klett.hr/sites/all/themes/klett/img/profil-klett-logo.png', 
+    description: 'Educational publisher providing innovative learning materials and solutions.', 
+    websiteUrl: 'https://www.profil-klett.hr/', 
+    dataAiHint: 'education logo', 
+    tier: 'Silver' 
+  },
+  { 
+    id: 'ihj', 
+    name: 'Institute for Croatian Language', 
+    logoUrl: 'https://ihjj.hr/assets/img/logo.png', 
+    description: 'Research institute dedicated to the study and preservation of Croatian language.', 
+    websiteUrl: 'https://ihjj.hr/', 
+    dataAiHint: 'institute logo', 
+    tier: 'Silver' 
+  },
+  { 
+    id: 'carnet', 
+    name: 'BRAIN CARNET', 
+    logoUrl: 'https://www.carnet.hr/wp-content/uploads/2023/11/brain-logo-color.png', 
+    description: 'Croatian Academic and Research Network promoting digital transformation in education.', 
+    websiteUrl: 'https://www.carnet.hr/projekt/brain/', 
+    dataAiHint: 'network logo', 
+    tier: 'Silver' 
+  },
+  { 
+    id: 'croai', 
+    name: 'CroAI', 
+    logoUrl: 'https://croai.org/wp-content/uploads/2020/09/croai-logo-white.png', 
+    description: 'Croatian AI Association promoting the development of artificial intelligence in Croatia.', 
+    websiteUrl: 'https://www.croai.org', 
+    dataAiHint: 'ai logo', 
+    tier: 'Silver' 
+  },
+  { 
+    id: 'porin', 
+    name: 'Riječka razvojna agencija Porin', 
+    logoUrl: 'https://www.porin.hr/wp-content/uploads/2021/06/logo.png', 
+    description: 'Rijeka Development Agency supporting innovation and entrepreneurship.', 
+    websiteUrl: 'https://www.porin.hr/', 
+    dataAiHint: 'development logo', 
+    tier: 'Silver' 
+  },
+  { 
+    id: 'syntagent', 
+    name: 'Syntagent', 
+    logoUrl: 'https://syntagent.ai/logo.png', 
+    description: 'AI-powered language technology company specializing in natural language processing solutions.', 
+    websiteUrl: 'https://www.syntagent.ai', 
+    dataAiHint: 'ai logo', 
+    tier: 'Silver' 
+  }
 ];
 
 const tierStyles = {
-  Platinum: "border-primary shadow-primary/20",
   Gold: "border-yellow-500 dark:border-yellow-400 shadow-yellow-500/20 dark:shadow-yellow-400/20",
   Silver: "border-slate-400 dark:border-slate-500 shadow-slate-400/20 dark:shadow-slate-500/20",
 }
 
 const tierTextStyles = { 
-  Platinum: "text-primary-foreground drop-shadow-sm",
   Gold: "text-yellow-300 dark:text-yellow-200 drop-shadow-sm",
   Silver: "text-slate-300 dark:text-slate-200 drop-shadow-sm",
 }
@@ -48,10 +123,9 @@ export function SponsorHighlights() {
     return acc;
   }, {} as Record<string, Sponsor[]>);
 
-  const tierOrder: ('Platinum' | 'Gold' | 'Silver')[] = ['Platinum', 'Gold', 'Silver'];
+  const tierOrder: ('Gold' | 'Silver')[] = ['Gold', 'Silver'];
 
   const tierTitles = {
-    Platinum: t('sponsors.platinumTierTitle'),
     Gold: t('sponsors.goldTierTitle'),
     Silver: t('sponsors.silverTierTitle'),
   };
@@ -64,8 +138,8 @@ export function SponsorHighlights() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/40 opacity-70"></div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center">
+        <div className="text-center mb-12 max-w-3xl">
           <Handshake className="mx-auto h-12 w-12 text-primary-foreground mb-4 drop-shadow-lg" />
           <h2 className="text-3xl font-bold tracking-tight text-primary-foreground drop-shadow-md">{t('sponsors.mainTitle')}</h2>
           <p className="text-primary-foreground/90 mt-2 drop-shadow-sm">
@@ -75,9 +149,9 @@ export function SponsorHighlights() {
 
         {tierOrder.map(tier => (
           groupedSponsors[tier] && (
-            <div key={tier} className="mb-12">
+            <div key={tier} className="mb-12 w-full max-w-6xl">
               <h3 className={`text-2xl font-semibold text-center mb-8 ${tierTextStyles[tier]}`}>{tierTitles[tier]}</h3>
-              <div className={`grid grid-cols-1 sm:grid-cols-2 ${tier === 'Platinum' ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-8`}>
+              <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center`}>
                 {groupedSponsors[tier].map((sponsor) => (
                   <Card 
                     key={sponsor.id} 
@@ -88,8 +162,8 @@ export function SponsorHighlights() {
                         <Image 
                           src={sponsor.logoUrl} 
                           alt={`${sponsor.name} logo`} 
-                          width={tier === 'Platinum' ? 200 : 180} 
-                          height={tier === 'Platinum' ? 100 : 90}
+                          width={180} 
+                          height={90}
                           className="object-contain rounded-md"
                           data-ai-hint={sponsor.dataAiHint}
                         />

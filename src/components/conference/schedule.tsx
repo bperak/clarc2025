@@ -27,28 +27,380 @@ type Session = {
   description: string;
   speakers: SessionSpeaker[];
   day: number; // 0 for Pre-Conference, 1 for Day 1, etc.
-  type: 'Keynote' | 'Workshop' | 'Talk' | 'Panel' | 'Break';
+  type: 'Keynote' | 'Workshop' | 'Talk' | 'Panel' | 'Break' | 'Social';
   location: string;
 };
 
 const sessionsData: Session[] = [
-  // Pre-Conference Day (Day 0)
-  { id: 's2', day: 0, time: '10:30 - 12:00', title: 'Workshop 1: Advanced Next.js for AI Applications', description: 'A hands-on session for Next.js enthusiasts focusing on building performant AI interfaces.', speakers: [{ name: 'Marcus Chen', id: 'sp2' }], type: 'Workshop', location: 'Room A' },
-  { id: 's7', day: 0, time: '11:00 - 12:30', title: 'Workshop 2: Deploying Scalable AI Models', description: 'Practical guide to deploying AI models in production environments.', speakers: [{ name: 'Janet Lee', id: 'sp7' }], type: 'Workshop', location: 'Room C' },
+  // Pre-Conference Day (November 5, 2025)
+  { 
+    id: 'classla', 
+    day: 0, 
+    time: '10:00 - 12:30', 
+    title: 'CLASSLA-express Workshop', 
+    description: 'A practical workshop on language processing tools for South Slavic languages, led by Ivana Filipović Petrović and Nikola Ljubešić.', 
+    speakers: [
+      { name: 'Ivana Filipović Petrović', id: 'ifp' },
+      { name: 'Nikola Ljubešić', id: 'nl' }
+    ], 
+    type: 'Workshop', 
+    location: 'Faculty of Philosophy, University of Rijeka' 
+  },
+  { 
+    id: 'lunch_break', 
+    day: 0, 
+    time: '12:30 - 14:00', 
+    title: 'Lunch Break', 
+    description: 'Network with fellow attendees and workshop participants.', 
+    speakers: [], 
+    type: 'Break', 
+    location: 'University Cafeteria' 
+  },
+  { 
+    id: 'tbd_workshop', 
+    day: 0, 
+    time: '14:00 - 16:30', 
+    title: 'Additional Workshop (TBD)', 
+    description: 'More information about this workshop will be announced soon.', 
+    speakers: [], 
+    type: 'Workshop', 
+    location: 'Faculty of Philosophy, University of Rijeka' 
+  },
+  { 
+    id: 'integrated_study', 
+    day: 0, 
+    time: '17:00 - 18:00', 
+    title: 'Integrated Study Presentation: FER and FFZG', 
+    description: 'Presentation of the integrated study program between Faculty of Electrical Engineering and Computing (FER) and Faculty of Humanities and Social Sciences (FFZG) focusing on Applied Cognitive Science.', 
+    speakers: [], 
+    type: 'Talk', 
+    location: 'Faculty of Philosophy, Main Lecture Hall' 
+  },
 
-  // Day 1
-  { id: 's1', day: 1, time: '09:00 - 10:00', title: 'Keynote: The Future of AI Collaboration', description: 'An inspiring talk about upcoming trends in collaborative AI research and development.', speakers: [{ name: 'Dr. Evelyn Reed', id: 'sp1' }], type: 'Keynote', location: 'Main Hall' },
-  { id: 's10', day: 1, time: '10:30 - 10:50', title: 'Parallel Talk 1A: AI in Personalized Learning', description: 'Exploring how AI can tailor educational experiences for individual students. (20 min talk)', speakers: [{ name: 'Dr. Kevin Grant', id: 'sp9' }], type: 'Talk', location: 'Room A' },
-  { id: 's11', day: 1, time: '10:30 - 10:50', title: 'Parallel Talk 1B: Bias Detection in LLMs', description: 'Techniques and challenges in identifying and mitigating bias in large language models. (20 min talk)', speakers: [{ name: 'Dr. Olivia Chen', id: 'sp10' }], type: 'Talk', location: 'Room D' },
-  { id: 's3', day: 1, time: '12:00 - 13:00', title: 'Lunch Break', description: 'Network with fellow attendees.', speakers: [], type: 'Break', location: 'Dining Area' },
-  { id: 's4', day: 1, time: '13:00 - 14:00', title: 'Talk: Ethical Considerations in AI', description: 'Exploring the ethical landscape of artificial intelligence.', speakers: [{ name: 'Dr. Anya Sharma', id: 'sp3' }], type: 'Talk', location: 'Room B' },
-  { id: 's5', day: 1, time: '14:30 - 15:30', title: 'Panel: AI in Healthcare Transformation', description: 'Experts discuss the impact of AI on healthcare.', speakers: [{ name: 'Dr. Ben Carter', id: 'sp4' }, { name: 'Dr. Sofia Ramirez', id: 'sp5' }], type: 'Panel', location: 'Main Hall' },
-  
-  // Day 2
-  { id: 's6', day: 2, time: '09:30 - 10:30', title: 'Keynote: Bridging Human and Machine Intelligence', description: 'Exploring synergies between human cognition and AI capabilities.', speakers: [{ name: 'Prof. Leo Maxwell', id: 'sp6' }], type: 'Keynote', location: 'Main Hall' },
-  { id: 's8', day: 2, time: '10:30 - 11:30', title: 'Talk: AI in Creative Industries', description: 'How AI is reshaping art, music, and design.', speakers: [{name: 'Alex Rivera', id: 'sp8'}], type: 'Talk', location: 'Room B'},
-  { id: 's9', day: 2, time: '11:30 - 12:30', title: 'Networking Coffee Break', description: 'Connect with peers and speakers.', speakers: [], type: 'Break', location: 'Lounge Area'},
+  // Day 1 (November 6, 2025)
+  { 
+    id: 'keynote_day1', 
+    day: 1, 
+    time: '09:00 - 10:00', 
+    title: 'Opening Keynote: The Future of Language Research in the Age of AI', 
+    description: 'An inspiring talk exploring the evolving landscape of language research and how artificial intelligence is transforming linguistic studies.', 
+    speakers: [{ name: 'Benedikt Perak', id: 'bp1' }], 
+    type: 'Keynote', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'coffee_break_morning1', 
+    day: 1, 
+    time: '10:00 - 10:15', 
+    title: 'Coffee Break', 
+    description: 'Short break before the parallel sessions.', 
+    speakers: [], 
+    type: 'Break', 
+    location: 'Foyer' 
+  },
+  { 
+    id: 'parallel_1a', 
+    day: 1, 
+    time: '10:15 - 10:40', 
+    title: 'Parallel Session 1A: NLP Applications in Croatian', 
+    description: 'Research presentation on natural language processing applications specifically designed for Croatian language (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd1' }], 
+    type: 'Talk', 
+    location: 'Room A' 
+  },
+  { 
+    id: 'parallel_1b', 
+    day: 1, 
+    time: '10:15 - 10:40', 
+    title: 'Parallel Session 1B: Digital Language Archives', 
+    description: 'Exploring how AI helps in creating and maintaining digital language archives for preservation (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd2' }], 
+    type: 'Talk', 
+    location: 'Room B' 
+  },
+  { 
+    id: 'parallel_2a', 
+    day: 1, 
+    time: '10:45 - 11:10', 
+    title: 'Parallel Session 2A: Language Model Biases', 
+    description: 'Examination of inherent biases in language models and strategies for mitigation (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd3' }], 
+    type: 'Talk', 
+    location: 'Room A' 
+  },
+  { 
+    id: 'parallel_2b', 
+    day: 1, 
+    time: '10:45 - 11:10', 
+    title: 'Parallel Session 2B: Sentiment Analysis Tools', 
+    description: 'Presentation of advanced sentiment analysis tools for South Slavic languages (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd4' }], 
+    type: 'Talk', 
+    location: 'Room B' 
+  },
+  { 
+    id: 'parallel_3a', 
+    day: 1, 
+    time: '11:15 - 11:40', 
+    title: 'Parallel Session 3A: Machine Translation Challenges', 
+    description: 'Discussion of specific challenges in machine translation for morphologically rich languages (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd5' }], 
+    type: 'Talk', 
+    location: 'Room A' 
+  },
+  { 
+    id: 'parallel_3b', 
+    day: 1, 
+    time: '11:15 - 11:40', 
+    title: 'Parallel Session 3B: AI in Educational Linguistics', 
+    description: 'Applications of AI in language education and learning research (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd6' }], 
+    type: 'Talk', 
+    location: 'Room B' 
+  },
+  { 
+    id: 'parallel_4a', 
+    day: 1, 
+    time: '11:45 - 12:10', 
+    title: 'Parallel Session 4A: Corpus Linguistics and AI', 
+    description: 'How AI is transforming corpus linguistics methodologies and analysis (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd7' }], 
+    type: 'Talk', 
+    location: 'Room A' 
+  },
+  { 
+    id: 'parallel_4b', 
+    day: 1, 
+    time: '11:45 - 12:10', 
+    title: 'Parallel Session 4B: Ethical Dimensions of Language AI', 
+    description: 'Exploring ethical considerations in developing and deploying language AI systems (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd8' }], 
+    type: 'Talk', 
+    location: 'Room B' 
+  },
+  { 
+    id: 'lunch_day1', 
+    day: 1, 
+    time: '12:15 - 14:00', 
+    title: 'Lunch Break', 
+    description: 'Extended networking lunch with exhibition of sponsor booths.', 
+    speakers: [], 
+    type: 'Break', 
+    location: 'Conference Restaurant' 
+  },
+  { 
+    id: 'keynote_day1_afternoon', 
+    day: 1, 
+    time: '14:00 - 15:00', 
+    title: 'Afternoon Keynote: Cognitive Aspects of AI Language Processing', 
+    description: 'Examining how AI language processing models relate to human cognitive processes.', 
+    speakers: [{ name: 'Renata Geld', id: 'rg1' }], 
+    type: 'Keynote', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'coffee_break_afternoon1', 
+    day: 1, 
+    time: '15:00 - 15:30', 
+    title: 'Coffee Break', 
+    description: 'Afternoon refreshments and networking.', 
+    speakers: [], 
+    type: 'Break', 
+    location: 'Foyer' 
+  },
+  { 
+    id: 'parallel_5a', 
+    day: 1, 
+    time: '15:30 - 15:55', 
+    title: 'Parallel Session 5A: Computational Linguistics Methods', 
+    description: 'Advanced computational methods for linguistic analysis (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd9' }], 
+    type: 'Talk', 
+    location: 'Room A' 
+  },
+  { 
+    id: 'parallel_5b', 
+    day: 1, 
+    time: '15:30 - 15:55', 
+    title: 'Parallel Session 5B: Social Media Language Analysis', 
+    description: 'AI techniques for analyzing language patterns on social media platforms (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd10' }], 
+    type: 'Talk', 
+    location: 'Room B' 
+  },
+  { 
+    id: 'parallel_6a', 
+    day: 1, 
+    time: '16:00 - 16:25', 
+    title: 'Parallel Session 6A: Language Model Fine-tuning', 
+    description: 'Strategies for fine-tuning large language models for specific linguistic tasks (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd11' }], 
+    type: 'Talk', 
+    location: 'Room A' 
+  },
+  { 
+    id: 'parallel_6b', 
+    day: 1, 
+    time: '16:00 - 16:25', 
+    title: 'Parallel Session 6B: Multimodal Language Processing', 
+    description: 'Integrating text, speech, and visual data in language processing systems (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd12' }], 
+    type: 'Talk', 
+    location: 'Room B' 
+  },
+  { 
+    id: 'roundtable_day1', 
+    day: 1, 
+    time: '17:00 - 18:30', 
+    title: 'Round Table: The Future of Language in the Age of AI', 
+    description: 'Expert discussion on how AI will transform language research, usage, and preservation in the coming decades, featuring leading academics and industry representatives.', 
+    speakers: [
+      { name: 'Tadić', id: 'tadic' },
+      { name: 'Krek', id: 'krek' },
+      { name: 'Ranka Stankovic', id: 'rs' },
+      { name: 'CARNET Representative', id: 'carnet' },
+      { name: 'BRAIN CARNET Representative', id: 'brain' },
+      { name: 'Algebra Representative', id: 'algebra' }
+    ], 
+    type: 'Panel', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'conference_dinner', 
+    day: 1, 
+    time: '19:30 - 22:00', 
+    title: 'Conference Dinner', 
+    description: 'Formal dinner and networking event for all conference participants with Croatian cuisine and cultural program.', 
+    speakers: [], 
+    type: 'Social', 
+    location: 'Hotel Restaurant (Details to be announced)' 
+  },
 
+  // Day 2 (November 7, 2025)
+  { 
+    id: 'keynote_day2', 
+    day: 2, 
+    time: '09:00 - 10:00', 
+    title: 'Day 2 Keynote: Computational Creativity in Language', 
+    description: 'Exploring how AI systems exhibit creative behaviors in language generation and processing.', 
+    speakers: [{ name: 'Tony Veale', id: 'tv1' }], 
+    type: 'Keynote', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'coffee_break_morning2', 
+    day: 2, 
+    time: '10:00 - 10:15', 
+    title: 'Coffee Break', 
+    description: 'Morning refreshments.', 
+    speakers: [], 
+    type: 'Break', 
+    location: 'Foyer' 
+  },
+  { 
+    id: 'sponsor_showcase_1', 
+    day: 2, 
+    time: '10:15 - 10:45', 
+    title: 'Sponsor Showcase: Microsoft Language AI Solutions', 
+    description: 'Presentation of Microsoft\'s latest advancements in language AI technologies and research tools.', 
+    speakers: [{ name: 'Microsoft Representative', id: 'ms1' }], 
+    type: 'Talk', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'sponsor_showcase_2', 
+    day: 2, 
+    time: '10:50 - 11:20', 
+    title: 'Sponsor Showcase: OpenAI Applications in Linguistics', 
+    description: 'Demonstration of OpenAI\'s tools and APIs for linguistic research and education.', 
+    speakers: [{ name: 'OpenAI Representative', id: 'oai1' }], 
+    type: 'Talk', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'innovative_format_1', 
+    day: 2, 
+    time: '11:30 - 12:30', 
+    title: 'Interactive Workshop: Hands-on with Language Models', 
+    description: 'Participatory session where attendees can experiment with language models for research purposes.', 
+    speakers: [{ name: 'Workshop Facilitator', id: 'wf1' }], 
+    type: 'Workshop', 
+    location: 'Computer Lab' 
+  },
+  { 
+    id: 'lunch_day2', 
+    day: 2, 
+    time: '12:30 - 14:00', 
+    title: 'Lunch Break', 
+    description: 'Continued networking with sponsor exhibition.', 
+    speakers: [], 
+    type: 'Break', 
+    location: 'Conference Restaurant' 
+  },
+  { 
+    id: 'parallel_7a', 
+    day: 2, 
+    time: '14:00 - 14:25', 
+    title: 'Parallel Session 7A: Dialectal Language Processing', 
+    description: 'Challenges and solutions in processing dialectal variations with AI (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd13' }], 
+    type: 'Talk', 
+    location: 'Room A' 
+  },
+  { 
+    id: 'parallel_7b', 
+    day: 2, 
+    time: '14:00 - 14:25', 
+    title: 'Parallel Session 7B: Language Preservation Technologies', 
+    description: 'How AI can assist in preserving endangered languages and dialects (20 min + 5 min Q&A).', 
+    speakers: [{ name: 'Speaker TBD', id: 'tbd14' }], 
+    type: 'Talk', 
+    location: 'Room B' 
+  },
+  { 
+    id: 'sponsor_showcase_3', 
+    day: 2, 
+    time: '14:30 - 15:00', 
+    title: 'Sponsor Showcase: InfoBip Communication AI', 
+    description: 'Presentation of InfoBip\'s AI-powered communication platforms and language processing capabilities.', 
+    speakers: [{ name: 'InfoBip Representative', id: 'ib1' }], 
+    type: 'Talk', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'panel_industry_academic', 
+    day: 2, 
+    time: '15:15 - 16:15', 
+    title: 'Panel: Industry-Academic Collaboration in Language AI', 
+    description: 'Discussion on fostering meaningful partnerships between academic linguists and industry AI developers.', 
+    speakers: [
+      { name: 'Academic Representative', id: 'ac1' },
+      { name: 'Industry Representative', id: 'in1' },
+      { name: 'Government Representative', id: 'gov1' }
+    ], 
+    type: 'Panel', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'awards_closing', 
+    day: 2, 
+    time: '16:30 - 17:30', 
+    title: 'Awards Ceremony and Closing Remarks', 
+    description: 'Presentation of awards for outstanding papers and research, followed by closing statements and future conference announcements.', 
+    speakers: [{ name: 'Conference Chair', id: 'chair1' }], 
+    type: 'Social', 
+    location: 'Main Hall' 
+  },
+  { 
+    id: 'networking_reception', 
+    day: 2, 
+    time: '17:30 - 19:00', 
+    title: 'Closing Networking Reception', 
+    description: 'Final opportunity to connect with colleagues and discuss potential collaborations.', 
+    speakers: [], 
+    type: 'Social', 
+    location: 'Foyer' 
+  }
 ];
 
 // Helper to sort sessions by time for each day
@@ -73,6 +425,7 @@ export function ClaritySchedule() {
     Talk: t('sessionTypeTalk'),
     Panel: t('sessionTypePanel'),
     Break: t('sessionTypeBreak'),
+    Social: t('sessionTypeSocial')
   };
 
   return (
@@ -124,7 +477,7 @@ export function ClaritySchedule() {
                     <CardHeader>
                       <div className="flex justify-between items-start">
                         <div>
-                          <CardTitle className="text-xl text-primary">{t(`session_${session.id}_title`)}</CardTitle>
+                          <CardTitle className="text-xl text-primary">{t(`session_${session.id}_title`, session.title)}</CardTitle>
                           <CardDescription className="flex items-center text-sm mt-1">
                             <Clock className="h-4 w-4 mr-2 text-muted-foreground" /> {session.time}
                             <span className="mx-2 text-muted-foreground">|</span>
@@ -137,7 +490,7 @@ export function ClaritySchedule() {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">{t(`session_${session.id}_description`)}</p>
+                      <p className="text-muted-foreground">{t(`session_${session.id}_description`, session.description)}</p>
                     </CardContent>
                     {session.speakers.length > 0 && (
                       <CardFooter className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
