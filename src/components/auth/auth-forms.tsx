@@ -1,4 +1,3 @@
-
 // src/components/auth/auth-forms.tsx
 "use client";
 
@@ -6,7 +5,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useAuth, getFirebaseAuthErrorMessage } from '@/contexts/auth-context';
+import { useAuth, getAuthErrorMessage } from '@/contexts/auth-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -52,7 +51,7 @@ export function LoginForm() {
     } catch (error: any) {
       toast({
         title: t('auth.loginErrorTitle'),
-        description: t(getFirebaseAuthErrorMessage(error)),
+        description: t(getAuthErrorMessage(error)),
         variant: "destructive",
       });
     } finally {
@@ -118,7 +117,7 @@ export function SignUpForm() {
     } catch (error: any) {
       toast({
         title: t('auth.signupErrorTitle'),
-        description: t(getFirebaseAuthErrorMessage(error)),
+        description: t(getAuthErrorMessage(error)),
         variant: "destructive",
       });
     } finally {

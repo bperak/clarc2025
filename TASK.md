@@ -218,3 +218,18 @@ This document outlines the actionable tasks required to implement the proposed f
 *   **Security Review:** Conduct a security review of all new features and APIs.
 *   **Performance Optimization:** Ensure that the new features do not negatively impact application performance.
 *   **Documentation:** Update user and developer documentation to reflect the new features.
+
+## Discovered During Work
+
+- **2025-05-19**: Migrate authentication & storage from Firebase to Supabase, including:
+  - Remove Firebase packages and config files
+  - Install `@supabase/supabase-js`
+  - Create `src/lib/supabase/client.ts`
+  - Refactor `AuthContext` and auth forms to use Supabase email & Google auth.
+  - Update `.env.example` and `README.md` with Supabase variables.
+  - Write unit tests for new Supabase auth logic.
+- **2025-05-19**: Refactor CLARC AI assistant to avoid bundling server-only Genkit dependencies:
+  - Added API route `src/app/api/ai/answer/route.ts` wrapping Genkit flow.
+  - Updated `ai-assistant.tsx` to call API via fetch.
+  - Added webpack alias to ignore handlebars in client build.
+  - Added Jest, ts-jest testing infrastructure and tests `tests/api/ai/answer.test.ts`.

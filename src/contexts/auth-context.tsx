@@ -1,18 +1,10 @@
-
 // src/contexts/auth-context.tsx
 "use client";
 
 import type { ReactNode } from 'react';
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { 
-  type User, 
-  onAuthStateChanged, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut,
-  type AuthError
-} from 'firebase/auth';
-import { auth } from '@/lib/firebase/config';
+import { supabase } from '@/lib/supabase/client';
+import type { User, AuthError } from '@supabase/supabase-js';
 import { Loader2 } from 'lucide-react';
 
 interface AuthContextType {
@@ -20,6 +12,7 @@ interface AuthContextType {
   loading: boolean;
   signInWithEmail: (email: string, pass: string) => Promise<User | null>;
   signUpWithEmail: (email: string, pass: string) => Promise<User | null>;
+  signInWithGoogle: () => Promise<User | null>;
   signOutUser: () => Promise<void>;
 }
 
@@ -30,23 +23,28 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
       setLoading(false);
     });
-    return () => unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signInWithEmail = async (email: string, pass: string): Promise<User | null> => {
     setLoading(true);
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, pass);
-      setUser(userCredential.user);
-      return userCredential.user;
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
+      if (error) throw error;
+      setUser(data.user);
+      return data.user;
     } catch (error) {
-      console.error("Error signing in with email and password", error);
-      setUser(null); // Ensure user state is cleared on error
-      throw error; // Re-throw for the form to handle
+      console.error('Error signing in with email and password', error);
+      setUser(null);
+      throw error;
     } finally {
       setLoading(false);
     }
@@ -55,12 +53,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const signUpWithEmail = async (email: string, pass: string): Promise<User | null> => {
     setLoading(true);
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
-      setUser(userCredential.user);
-      return userCredential.user;
+      const { data, error } = await supabase.auth.signUp({ email, password: pass });
+      if (error) throw error;
+      setUser(data.user);
+      return data.user;
     } catch (error) {
-      console.error("Error signing up with email and password", error);
+      console.error('Error signing up with email and password', error);
       setUser(null);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signInWithGoogle = async (): Promise<User | null> => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({ provider: 'google' });
+      if (error) throw error;
+      // For OAuth redirects, Supabase returns a url for redirection; in SPA, user will be redirected.
+      // The session/user will be set after redirect, so we don't set user here.
+      return data.user ?? null;
+    } catch (error) {
+      console.error('Error signing in with Google', error);
       throw error;
     } finally {
       setLoading(false);
@@ -70,10 +85,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const signOutUser = async () => {
     setLoading(true);
     try {
-      await signOut(auth);
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
       setUser(null);
     } catch (error) {
-      console.error("Error signing out", error);
+      console.error('Error signing out', error);
       throw error;
     } finally {
       setLoading(false);
@@ -89,7 +105,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, signInWithEmail, signUpWithEmail, signOutUser }}>
+    <AuthContext.Provider value={{ user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signOutUser }}>
       {children}
     </AuthContext.Provider>
   );
@@ -103,30 +119,12 @@ export const useAuth = (): AuthContextType => {
   return context;
 };
 
-export const getFirebaseAuthErrorMessage = (error: AuthError | any): string => {
-  if (!error || !error.code) {
-    return "An unknown error occurred.";
+export const getAuthErrorMessage = (error: AuthError | any): string => {
+  if (!error) {
+    return 'An unknown error occurred.';
   }
-  switch (error.code) {
-    case 'auth/invalid-email':
-      return 'Invalid email address format.';
-    case 'auth/user-disabled':
-      return 'This user account has been disabled.';
-    case 'auth/user-not-found':
-      return 'No user found with this email.';
-    case 'auth/wrong-password':
-      return 'Incorrect password.';
-    case 'auth/email-already-in-use':
-      return 'This email address is already in use.';
-    case 'auth/operation-not-allowed':
-      return 'Email/password accounts are not enabled.';
-    case 'auth/weak-password':
-      return 'Password is too weak. It should be at least 6 characters.';
-    case 'auth/requires-recent-login':
-      return 'This operation is sensitive and requires recent authentication. Please log in again.';
-    case 'auth/too-many-requests':
-      return 'Too many unsuccessful login attempts. Please try again later or reset your password.';
-    default:
-      return error.message || 'An unexpected error occurred. Please try again.';
-  }
+  // Supabase AuthError exposes a `message` property that is already human-readable.
+  return error.message || 'An unexpected error occurred. Please try again.';
 };
+
+export const getFirebaseAuthErrorMessage = getAuthErrorMessage;

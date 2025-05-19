@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { answerConferenceQuestions } from '@/ai/flows/answer-conference-questions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -46,8 +45,16 @@ export function ClarcAiAssistant() {
     form.reset();
 
     try {
-      const aiResponse = await answerConferenceQuestions({ question: data.question });
-      const aiMessage: ChatMessage = { id: (Date.now() + 1).toString(), type: 'ai', message: aiResponse.answer };
+      const res = await fetch('/api/ai/answer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: data.question }),
+      });
+      if (!res.ok) {
+        throw new Error(`API error ${res.status}`);
+      }
+      const { answer } = await res.json();
+      const aiMessage: ChatMessage = { id: (Date.now() + 1).toString(), type: 'ai', message: answer };
       setChatHistory(prev => [...prev, aiMessage]);
     } catch (error) {
       console.error("Error getting AI response:", error);
