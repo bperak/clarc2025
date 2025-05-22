@@ -42,8 +42,8 @@ export function AccommodationsSection() {
               <Image
                 src={hotel.imageUrl}
                 alt={hotel.name}
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
                 data-ai-hint={hotel.dataAiHint}
               />
             </div>
@@ -51,7 +51,13 @@ export function AccommodationsSection() {
               <CardTitle>{hotel.name}</CardTitle>
             </CardHeader>
             <CardContent className="p-6 pt-0 flex-grow">
-              <p className="text-muted-foreground mb-4">{t(`hotel${hotel.name.replace(/\\s/g, '')}Description`)}</p>
+              <p className="text-muted-foreground mb-4">
+                {t(
+                  `hotel${hotel.name
+                    .replace(/^Hotel\s+/i, '') // Remove leading "Hotel " if present
+                    .replace(/\s/g, '')}Description`
+                )}
+              </p>
             </CardContent>
             <div className="p-6 pt-0 mt-auto">
               <Button asChild variant="outline" className="w-full">

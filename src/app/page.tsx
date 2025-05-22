@@ -1,4 +1,3 @@
-
 "use client"; // Make this a client component to use useTranslation
 
 import { Header } from '@/components/layout/header';
@@ -31,9 +30,8 @@ export default function HomePage() {
              <Image 
                 src="https://www.adrionik.com/img/site/accommod_region_photos/icon/4_001.jpg" 
                 alt="Futuristic abstract network connections representing Opatija's blend of history and technology" 
-                layout="fill" 
-                objectFit="cover"
-                className="opacity-20" 
+                fill 
+                className="object-cover opacity-20" 
                 data-ai-hint="futuristic Opatija"
                 priority
              />

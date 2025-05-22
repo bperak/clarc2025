@@ -15,9 +15,8 @@ export function AboutOpatijaSection() {
         <Image
           src="https://www.mycroatiacruise.com/storage/destinations/opatija.jpg"
           alt="Scenic view of Opatija, Croatia with its coastline and historic buildings"
-          layout="fill"
-          objectFit="cover"
-          className="opatija-bg-animate"
+          fill
+          className="object-cover opatija-bg-animate"
           data-ai-hint="Opatija Croatia"
           priority // Preload this large image
         />

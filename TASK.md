@@ -228,8 +228,53 @@ This document outlines the actionable tasks required to implement the proposed f
   - Refactor `AuthContext` and auth forms to use Supabase email & Google auth.
   - Update `.env.example` and `README.md` with Supabase variables.
   - Write unit tests for new Supabase auth logic.
+- **2025-05-25**: Set up HTTPS access via custom domain:
+  - Created Nginx configuration for reverse proxy with SSL
+  - Added documentation for HTTPS setup in docs/https_setup.md
+  - Created automated setup script scripts/setup_https.sh
+  - Updated README.md to include HTTPS information
 - **2025-05-19**: Refactor CLARC AI assistant to avoid bundling server-only Genkit dependencies:
   - Added API route `src/app/api/ai/answer/route.ts` wrapping Genkit flow.
   - Updated `ai-assistant.tsx` to call API via fetch.
   - Added webpack alias to ignore handlebars in client build.
   - Added Jest, ts-jest testing infrastructure and tests `tests/api/ai/answer.test.ts`.
+- **2025-05-21**: Added Jest unit tests for Supabase authentication logic
+  - Added `@testing-library/react` and `@testing-library/jest-dom` dev dependencies.
+  - Updated `jest.config.ts` to jsdom environment and include tsx tests.
+  - Created test file `tests/contexts/auth-context.test.tsx` covering `signUpWithEmail` and `signInWithEmail` success and error cases, mocking Supabase client.
+  - Added Jest setup file `jest.setup.ts` to include jest-dom matchers.
+- **2025-05-21**: Integrate LightRAG (Option 1 RAG flow)
+  * Added LightRAG client (`src/lib/lightRagClient.ts`) to call external LightRAG REST API.
+  * Created Genkit flow `answerConferenceQuestionsRAG` (`src/ai/flows/answer-conference-questions-rag.ts`).
+  * Added Next.js API route `src/app/api/ai/answer-rag/route.ts`.
+  * Updated AI assistant UI to hit the new RAG endpoint.
+  * Environment variable `NEXT_PUBLIC_LIGHTRAG_API_URL` documented in README.
+  * Pending: ingestion script and unit tests for RAG client.
+- **2025-05-21**: LightRAG embedding dimension updated
+  * Set `EMBEDDING_DIM=1536` in `scripts/start_lightrag.sh` to match OpenAI `text-embedding-3-small` model.
+  * Updated README env table and PLANNING.md with AI Embedding Configuration notes.
+  * Note: If we switch to Supabase pgvector in the future, ensure vector columns use `vector(1536)` and migrate any legacy 1 024-D data.
+- **2025-05-22**: Add ingestion script for website content into LightRAG
+  * Created `scripts/ingest_site_to_rag.py` CLI to fetch webpages, extract text with BeautifulSoup, and POST to LightRAG `/documents/text` endpoint.
+  * Added dependencies `requests` and `beautifulsoup4` in new `requirements.txt`.
+  * Added unit tests `tests/scripts/test_ingest_site_to_rag.py`.
+  * Updated README with usage instructions (pending separate commit).
+- **2025-05-21**: Node.js version upgrade needed
+  * Current environment reports `node -v` → `v12.22.12` which is incompatible with Jest 29 and Next.js 15 expectations.
+  * Add `.nvmrc` with `18` and update documentation to require Node 18+.
+  * Action: Developers should install Node 18 via nvm/asdf or system package manager and reinstall node_modules.
+- **2025-05-24**: Enhanced CLARC AI Assistant with markdown support and streaming
+  * Added markdown rendering with react-markdown to display formatted responses
+  * Implemented streaming functionality to show responses as they are generated
+  * Updated LightRagClient with a simulated streaming function (lightRagStreamingQuery)
+  * Added @tailwindcss/typography plugin for better markdown styling
+  * Enhanced API route to support streaming response mode
+  * Modified AI flows to accommodate streaming functionality with callback support
+- **2025-05-25**: Set up persistent systemd services for production
+  * Created systemd service files for both application components:
+    - `app-9003.service` for the Next.js application (port 9003)
+    - `lightrag-9000.service` for the LightRAG service (port 9000)
+  * Added an installation script `install-services.sh` to automate service setup
+  * Updated README.md with service management instructions
+  * Fixed port allocation and service configuration for proper domain routing
+  * Ensured services restart automatically on failure and after system reboot

@@ -87,8 +87,155 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  		},
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+            color: 'var(--tw-prose-body)',
+            '[class~="lead"]': {
+              color: 'var(--tw-prose-lead)',
+            },
+            a: {
+              color: 'var(--tw-prose-links)',
+              textDecoration: 'underline',
+              fontWeight: '500',
+            },
+            strong: {
+              color: 'var(--tw-prose-bold)',
+              fontWeight: '600',
+            },
+            'ol[type="A"]': {
+              listStyleType: 'upper-alpha',
+            },
+            'ol[type="a"]': {
+              listStyleType: 'lower-alpha',
+            },
+            'ol[type="A" s]': {
+              listStyleType: 'upper-alpha',
+            },
+            'ol[type="a" s]': {
+              listStyleType: 'lower-alpha',
+            },
+            'ol[type="I"]': {
+              listStyleType: 'upper-roman',
+            },
+            'ol[type="i"]': {
+              listStyleType: 'lower-roman',
+            },
+            'ol[type="I" s]': {
+              listStyleType: 'upper-roman',
+            },
+            'ol[type="i" s]': {
+              listStyleType: 'lower-roman',
+            },
+            'ol[type="1"]': {
+              listStyleType: 'decimal',
+            },
+            ul: {
+              listStyleType: 'disc',
+            },
+            'ol > li::marker': {
+              fontWeight: '400',
+              color: 'var(--tw-prose-counters)',
+            },
+            'ul > li::marker': {
+              color: 'var(--tw-prose-bullets)',
+            },
+            hr: {
+              borderColor: 'var(--tw-prose-hr)',
+              borderTopWidth: 1,
+            },
+            blockquote: {
+              fontWeight: '500',
+              fontStyle: 'italic',
+              color: 'var(--tw-prose-quotes)',
+              borderLeftWidth: '0.25rem',
+              borderLeftColor: 'var(--tw-prose-quote-borders)',
+              paddingLeft: '1em',
+            },
+            h1: {
+              color: 'var(--tw-prose-headings)',
+              fontWeight: '800',
+              fontSize: '2.25em',
+              marginTop: '0',
+              marginBottom: '0.8888889em',
+              lineHeight: '1.1111111',
+            },
+            h2: {
+              color: 'var(--tw-prose-headings)',
+              fontWeight: '700',
+              fontSize: '1.5em',
+              marginTop: '2em',
+              marginBottom: '1em',
+              lineHeight: '1.3333333',
+            },
+            h3: {
+              color: 'var(--tw-prose-headings)',
+              fontWeight: '600',
+              fontSize: '1.25em',
+              marginTop: '1.6em',
+              marginBottom: '0.6em',
+              lineHeight: '1.6',
+            },
+            h4: {
+              color: 'var(--tw-prose-headings)',
+              fontWeight: '600',
+              marginTop: '1.5em',
+              marginBottom: '0.5em',
+              lineHeight: '1.5',
+            },
+            code: {
+              color: 'var(--tw-prose-code)',
+              fontWeight: '600',
+              fontSize: '0.875em',
+            },
+            'code::before': {
+              content: '"`"',
+            },
+            'code::after': {
+              content: '"`"',
+            },
+            'a code': {
+              color: 'var(--tw-prose-links)',
+            },
+            pre: {
+              color: 'var(--tw-prose-pre-code)',
+              backgroundColor: 'var(--tw-prose-pre-bg)',
+              overflowX: 'auto',
+              fontWeight: '400',
+              fontSize: '0.875em',
+              lineHeight: '1.7142857',
+              borderRadius: '0.375rem',
+              paddingTop: '0.8571429em',
+              paddingRight: '1.1428571em',
+              paddingBottom: '0.8571429em',
+              paddingLeft: '1.1428571em',
+            },
+            'pre code': {
+              backgroundColor: 'transparent',
+              borderWidth: '0',
+              borderRadius: '0',
+              padding: '0',
+              fontWeight: 'inherit',
+              color: 'inherit',
+              fontSize: 'inherit',
+              fontFamily: 'inherit',
+              lineHeight: 'inherit',
+            },
+            'pre code::before': {
+              content: 'none',
+            },
+            'pre code::after': {
+              content: 'none',
+            },
+          },
+        },
+      },
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography')
+  ],
 } satisfies Config;

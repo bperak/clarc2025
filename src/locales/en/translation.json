@@ -236,5 +236,83 @@
   "session_keynote_day2_description": "Exploring how AI systems exhibit creative behaviors in language generation and processing.",
   
   "session_awards_closing_title": "Awards Ceremony and Closing Remarks",
-  "session_awards_closing_description": "Presentation of awards for outstanding papers and research, followed by closing statements and future conference announcements."
+  "session_awards_closing_description": "Presentation of awards for outstanding papers and research, followed by closing statements and future conference announcements.",
+
+  "session_coffee_break_morning1_title": "Coffee Break",
+  "session_coffee_break_morning1_description": "Short break before the parallel sessions.",
+
+  "session_parallel_1a_title": "Parallel Session 1A: NLP Applications in Croatian",
+  "session_parallel_1a_description": "Research presentation on natural language processing applications specifically designed for Croatian language (20 min + 5 min Q&A).",
+
+  "session_parallel_1b_title": "Parallel Session 1B: Digital Language Archives",
+  "session_parallel_1b_description": "Exploring how AI helps in creating and maintaining digital language archives for preservation (20 min + 5 min Q&A).",
+
+  "session_parallel_2a_title": "Parallel Session 2A: Language Model Biases",
+  "session_parallel_2a_description": "Examination of inherent biases in language models and strategies for mitigation (20 min + 5 min Q&A).",
+
+  "session_parallel_2b_title": "Parallel Session 2B: Sentiment Analysis Tools",
+  "session_parallel_2b_description": "Presentation of advanced sentiment analysis tools for South Slavic languages (20 min + 5 min Q&A).",
+
+  "session_parallel_3a_title": "Parallel Session 3A: Machine Translation Challenges",
+  "session_parallel_3a_description": "Discussion of specific challenges in machine translation for morphologically rich languages (20 min + 5 min Q&A).",
+
+  "session_parallel_3b_title": "Parallel Session 3B: AI in Educational Linguistics",
+  "session_parallel_3b_description": "Applications of AI in language education and learning research (20 min + 5 min Q&A).",
+
+  "session_parallel_4a_title": "Parallel Session 4A: Corpus Linguistics and AI",
+  "session_parallel_4a_description": "How AI is transforming corpus linguistics methodologies and analysis (20 min + 5 min Q&A).",
+
+  "session_parallel_4b_title": "Parallel Session 4B: Ethical Dimensions of Language AI",
+  "session_parallel_4b_description": "Exploring ethical considerations in developing and deploying language AI systems (20 min + 5 min Q&A).",
+
+  "session_lunch_day1_title": "Lunch Break",
+  "session_lunch_day1_description": "Extended networking lunch with exhibition of sponsor booths.",
+
+  "session_keynote_day1_afternoon_title": "Afternoon Keynote: Cognitive Aspects of AI Language Processing",
+  "session_keynote_day1_afternoon_description": "Examining how AI language processing models relate to human cognitive processes.",
+
+  "session_coffee_break_afternoon1_title": "Coffee Break",
+  "session_coffee_break_afternoon1_description": "Afternoon refreshments and networking.",
+
+  "session_parallel_5a_title": "Parallel Session 5A: Computational Linguistics Methods",
+  "session_parallel_5a_description": "Advanced computational methods for linguistic analysis (20 min + 5 min Q&A).",
+
+  "session_parallel_5b_title": "Parallel Session 5B: Social Media Language Analysis",
+  "session_parallel_5b_description": "AI techniques for analyzing language patterns on social media platforms (20 min + 5 min Q&A).",
+
+  "session_parallel_6a_title": "Parallel Session 6A: Language Model Fine-tuning",
+  "session_parallel_6a_description": "Strategies for fine-tuning large language models for specific linguistic tasks (20 min + 5 min Q&A).",
+
+  "session_parallel_6b_title": "Parallel Session 6B: Multimodal Language Processing",
+  "session_parallel_6b_description": "Integrating text, speech, and visual data in language processing systems (20 min + 5 min Q&A).",
+
+  "session_coffee_break_morning2_title": "Coffee Break",
+  "session_coffee_break_morning2_description": "Morning refreshments.",
+
+  "session_sponsor_showcase_1_title": "Sponsor Showcase: Microsoft Language AI Solutions",
+  "session_sponsor_showcase_1_description": "Presentation of Microsoft's latest advancements in language AI technologies and research tools.",
+
+  "session_sponsor_showcase_2_title": "Sponsor Showcase: OpenAI Applications in Linguistics",
+  "session_sponsor_showcase_2_description": "Demonstration of OpenAI's tools and APIs for linguistic research and education.",
+
+  "session_innovative_format_1_title": "Interactive Workshop: Hands-on with Language Models",
+  "session_innovative_format_1_description": "Participatory session where attendees can experiment with language models for research purposes.",
+
+  "session_lunch_day2_title": "Lunch Break",
+  "session_lunch_day2_description": "Continued networking with sponsor exhibition.",
+
+  "session_parallel_7a_title": "Parallel Session 7A: Dialectal Language Processing",
+  "session_parallel_7a_description": "Challenges and solutions in processing dialectal variations with AI (20 min + 5 min Q&A).",
+
+  "session_parallel_7b_title": "Parallel Session 7B: Language Preservation Technologies",
+  "session_parallel_7b_description": "How AI can assist in preserving endangered languages and dialects (20 min + 5 min Q&A).",
+
+  "session_sponsor_showcase_3_title": "Sponsor Showcase: InfoBip Communication AI",
+  "session_sponsor_showcase_3_description": "Presentation of InfoBip's AI-powered communication platforms and language processing capabilities.",
+
+  "session_panel_industry_academic_title": "Panel: Industry-Academic Collaboration in Language AI",
+  "session_panel_industry_academic_description": "Discussion on fostering meaningful partnerships between academic linguists and industry AI developers.",
+
+  "session_networking_reception_title": "Closing Networking Reception",
+  "session_networking_reception_description": "Final opportunity to connect with colleagues and discuss potential collaborations."
 }

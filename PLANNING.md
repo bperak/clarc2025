@@ -15,6 +15,13 @@ The CLARC 2025 conference application currently provides core functionalities es
 *   **UI Components:** A suite of reusable UI components are available in `src/components/ui/`, providing a consistent look and feel.
 *   **Utility Functions:** Common utility functions are likely located in `src/lib/utils.ts`.
 
+### AI Embedding Configuration
+
+* LightRAG is currently configured to use OpenAI's `text-embedding-3-small` model, which returns 1 536-dimensional vectors.
+* We set `EMBEDDING_DIM=1536` in `scripts/start_lightrag.sh` so LightRAG's vector store (default `NanoVectorDBStorage`) initialises with the correct dimension.
+* Supabase/pgvector is **not** yet used for embeddings. If we migrate to `PGVectorStorage`, the table schema must declare `vector(1536)` to match the model.
+* Any historic data produced with a 1 024-dimension setting must be dropped or migrated before switching to pgvector.
+
 The application utilizes Next.js for the frontend and backend API routes, as indicated by `next.config.ts`, `src/app/`, and other related files.
 
 ## Future Enhancements
@@ -59,3 +66,27 @@ These are potential features to expand the functionality and engagement of the C
 *   **Continued Networking:** Maintain the networking features and attendee profiles to allow connections to persist beyond the event dates.
 
 Implementing these features will require significant development effort, including frontend development, backend API creation, database design, and potential integration with third-party services. Localization efforts will need to be extended to cover all new features and content.
+
+## Production Deployment Architecture
+
+The CLARC 2025 application is deployed with the following architecture:
+
+1. **Next.js Application (Port 9003):**
+   - The main conference application running on port 9003
+   - Managed as a systemd service (`app-9003.service`)
+   - Served at https://clarc2025.cji.uniri.hr/ via Nginx reverse proxy
+   - Started with `npm run dev` command
+
+2. **LightRAG Service (Port 9000):**
+   - Retrieval-Augmented Generation service for the AI assistant
+   - Managed as a systemd service (`lightrag-9000.service`)
+   - Started with `./scripts/start_lightrag.sh 9000` command
+   - Used internally by the Next.js app for AI question answering
+
+3. **Nginx Reverse Proxy:**
+   - Handles SSL termination and domain routing
+   - Configuration at `/etc/nginx/sites-available/clarc2025.conf`
+   - Routes https://clarc2025.cji.uniri.hr/ to the Next.js app (port 9003)
+   - Managed by Certbot for SSL certificate renewal
+
+This setup ensures the application continues running even after disconnection and automatically restarts on server reboot.

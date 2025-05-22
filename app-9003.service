@@ -1,0 +1,16 @@
+[Unit]
+Description=CLARC 2025 Next.js App Service on port 9003
+After=network.target
+
+[Service]
+Type=simple
+User=Liks
+WorkingDirectory=/home/Liks/clarc2025
+ExecStart=/bin/bash -c "source .venv/bin/activate && npm run dev"
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target 

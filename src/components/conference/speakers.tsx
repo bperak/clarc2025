@@ -94,9 +94,8 @@ export function SpeakerShowcase() {
         <Image
           src="https://placehold.co/1920x1080.png" // Placeholder, can be changed
           alt="Abstract network or futuristic background for speakers section"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-20"
+          fill
+          className="object-cover opacity-20"
           data-ai-hint="abstract network"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-background/70 via-primary/40 to-accent/40 opacity-75"></div>

@@ -1,0 +1,16 @@
+[Unit]
+Description=LightRAG Service on port 9000
+After=network.target
+
+[Service]
+Type=simple
+User=Liks
+WorkingDirectory=/home/Liks/clarc2025
+ExecStart=/bin/bash -c "source .venv/bin/activate && ./scripts/start_lightrag.sh 9000"
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target 

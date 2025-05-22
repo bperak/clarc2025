@@ -13,6 +13,7 @@ CLARC 2025 is a comprehensive conference management application built with Next.
 - **Venue Information**: Details about the conference venue
 - **Accommodations**: Information about nearby accommodations
 - **About Opatija**: Learn about the conference location
+- **Secure Access**: HTTPS configuration for secure access via clarc2025.cji.uniri.hr
 
 ## 🛠️ Technologies Used
 
@@ -28,6 +29,7 @@ CLARC 2025 is a comprehensive conference management application built with Next.
 ## 📋 Prerequisites
 
 - Node.js 18+ and npm
+- A `.nvmrc` file is included; run `nvm use` (or install Node 18 manually) to match the required runtime.
 - Supabase account for authentication and database
 - API keys for Genkit AI (if using AI assistant features)
 
@@ -98,6 +100,33 @@ For development with hot-reloading:
 npm run genkit:watch
 ```
 
+### 🔍 Adding Content to the RAG Store
+
+You can ingest any public webpage (or a list of them) into LightRAG so that the
+assistant can answer questions based on that content.
+
+```bash
+python scripts/ingest_site_to_rag.py \
+  --urls https://clarc2025.example.com https://clarc2025.example.com/speakers
+```
+
+The script will:
+
+1. Download each page.
+2. Extract visible text with BeautifulSoup.
+3. `POST` the cleaned text to LightRAG's `/documents/text` endpoint.
+
+Environment variables used by the script:
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `LIGHTRAG_API_URL` | `http://localhost:9000` | Base URL of the LightRAG instance. |
+| `LIGHTRAG_API_KEY` | *(none)* | Optional API key if LightRAG auth is enabled. |
+
+Make sure you have `requests` and `beautifulsoup4` installed (listed in
+`requirements.txt`). Activate the project's Python virtual environment (the one
+LightRAG uses) before running the script.
+
 ## 🔄 Project Structure
 
 - `/src` - Application source code
@@ -116,3 +145,110 @@ npm run genkit:watch
 ## 👥 Contributing
 
 Please refer to the [PLANNING.md](PLANNING.md) document for details on the project architecture and future development plans.
+
+## 🔒 HTTPS Configuration
+
+For setting up secure HTTPS access to the application via clarc2025.cji.uniri.hr, see the [HTTPS Setup Guide](docs/https_setup.md).
+
+### Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_LIGHTRAG_API_URL` | Base URL of the running LightRAG server (e.g. `http://localhost:8000`). The CLARC AI assistant will POST to `<url>/query` with `{ question: string }` and expects `{ answer: string }`. |
+| `EMBEDDING_DIM` | Embedding vector dimension that LightRAG should expect. Must match the dimensions returned by the embedding model. For OpenAI `text-embedding-3-small` this is `1536`. |
+| `INPUT_DIR` | Path passed to `lightrag-server --input-dir`. Defaults to `./inputs`. Point this at whatever folder holds your site's markdown/HTML source so LightRAG auto-indexes it on startup. |
+
+## Production Services Setup
+
+To run the application and LightRAG as persistent services that continue running even after disconnecting:
+
+1. Check that you have the service files and install script:
+   - `app-9003.service` - For the CLARC 2025 Next.js application on port 9003
+   - `lightrag-9000.service` - For the LightRAG instance on port 9000
+   - `install-services.sh` - Installation script
+
+2. Make the installation script executable if needed:
+   ```bash
+   chmod +x install-services.sh
+   ```
+
+3. Run the installation script with sudo:
+   ```bash
+   sudo ./install-services.sh
+   ```
+
+This will:
+- Copy the service files to `/etc/systemd/system/`
+- Enable both services to start automatically on boot
+- Start both services immediately
+- Show you the status of each service
+
+### Managing Services
+
+Use these commands to manage the services:
+
+- Check status:
+  ```bash
+  sudo systemctl status app-9003.service
+  sudo systemctl status lightrag-9000.service
+  ```
+
+- Stop services:
+  ```bash
+  sudo systemctl stop app-9003.service
+  sudo systemctl stop lightrag-9000.service
+  ```
+
+- Start services:
+  ```bash
+  sudo systemctl start app-9003.service
+  sudo systemctl start lightrag-9000.service
+  ```
+
+- Restart services:
+  ```bash
+  sudo systemctl restart app-9003.service
+  sudo systemctl restart lightrag-9000.service
+  ```
+
+- View logs:
+  ```bash
+  sudo journalctl -u app-9003.service
+  sudo journalctl -u lightrag-9000.service
+  ```
+
+The services will continue running even after disconnecting from the server and will automatically restart on reboot.
+
+### Troubleshooting Services
+
+If you encounter issues with the services:
+
+1. **Check which services are actually running:**
+   ```bash
+   ps aux | grep -E '(lightrag|node)'
+   ```
+
+2. **Verify port usage:**
+   ```bash
+   sudo lsof -i :9000
+   sudo lsof -i :9003
+   ```
+
+3. **View detailed service logs:**
+   ```bash
+   sudo journalctl -u app-9003.service -n 100
+   sudo journalctl -u lightrag-9000.service -n 100
+   ```
+
+4. **Check Nginx configuration:**
+   ```bash
+   sudo nginx -t
+   cat /etc/nginx/sites-available/clarc2025.conf
+   ```
+
+5. **Common issues:**
+   - If LightRAG is showing on the domain instead of the Next.js app, ensure:
+     - LightRAG is only running on port 9000
+     - Next.js is running on port 9003
+     - Nginx is forwarding the domain to port 9003
+   - If services crash repeatedly, check for port conflicts or memory issues
